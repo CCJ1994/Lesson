@@ -7,5 +7,6 @@
 </head>
 <body>
   <h1>會員中心</h1>
+  親愛的<?=$_GET['name'];?>您好，歡迎光臨
 </body>
 </html>

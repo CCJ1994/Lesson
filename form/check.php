@@ -8,7 +8,7 @@ $users=[
 if(!empty($_POST['acc']) && !empty($_POST['pw'])){
   $acc=$_POST['acc'];
   $pw=$_POST['pw'];
-  $chk='';;
+  $chk='';
   foreach($users as $user){
   if($user['acc']==$acc){
       $chk=$user;
@@ -17,12 +17,20 @@ if(!empty($_POST['acc']) && !empty($_POST['pw'])){
 }
   if(!empty($chk)){
     if($chk['pw']==$pw){
-      header('location:mem.php');
+      switch($chk['type']){
+        case 'vip':
+        header("location:vip.php?name={$chk['acc']}");
+        break;
+        case 'mem':
+        header("location:mem.php?name={$chk['acc']}");
+        break;
+      }
+
     }else{
-      header("location:error.php");
+      header("location:error.php?e=2");
     }
   }else{
-    header("location:error.php");
+    header("location:error.php?e=1");
   }
 }else{
   header("location:login.html");
