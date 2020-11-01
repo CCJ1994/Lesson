@@ -25,22 +25,41 @@
 </head>
 <body>
   <?php
+    
+
     date_default_timezone_set("Asia/Taipei");
-    $thisMonth=date("m");
+
+    $year=date("Y");
+    $month=date("m");
+    
+
+    if(isset($_GET['y']) && isset($_GET['m'])){
+      $year=$_GET['y'];
+      $month=$_GET['m'];
+      
+
+    }
+
+    if($month>12){
+        $month=1;
+        $year++;
+    }
+    if($month<1){
+        $month=12;
+        $year--;
+    }
     $days=date("t");
     $firstDate=strtotime(date("Y-m-")."1");
     $startweekday=date("w",$firstDate);
-    $nextMonth=date("m",strtotime("+1 month"));
-    $prevMonth=date("m",strtotime("-1 month"));
     
   ?>
-  <h1>月曆</h1>
-  <div>
-    <a href="1.php">上一個月</a>
-    <a href="1.php">下一個月</a>
+    <h1>月曆</h1>
+  <div class="container">
+    <h2><?echo $year."/".$month?></h2>
+      <a href="test.php?y=<?=$year?>&m=<?=($month-1)?>">Prev</a>
+      <a href="test.php?y=<?=$year?>&m=<?=($month+1)?>">Next</a>
   </div>
   <table>
-    <tr><td colspan="7";><?echo date('m')?>月</td></tr>
     <tr>
       <td>Sun.</td>
       <td>Mon.</td>
@@ -51,14 +70,16 @@
       <td>Sat.</td>
     </tr>
   <?php
+
     for($i=0;$i<6;$i++){
       echo "<tr>";
       for($j=0;$j<7;$j++){
         echo "<td>";
         if($i==0 && $j<$startweekday){
-          echo "(30-$j+1)";
+          // echo "(30-$j+1)";
+          echo "&nbsp;";
         }else if(((7*$i)+1+$j-$startweekday)>$days){
-          echo ((7*$i)+1+$j-$days);
+          // echo ((7*$i)+1+$j-$days);
 
         }else{
           echo ((7*$i)+1+$j-$startweekday);
@@ -72,6 +93,5 @@
   ?>
 
   </table>
-  
 </body>
 </html>
