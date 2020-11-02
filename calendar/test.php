@@ -25,19 +25,14 @@
 </head>
 <body>
   <?php
-    
-
     date_default_timezone_set("Asia/Taipei");
-
     $year=date("Y");
     $month=date("m");
     
-
     if(isset($_GET['y']) && isset($_GET['m'])){
       $year=$_GET['y'];
       $month=$_GET['m'];
       
-
     }
 
     if($month>12){
@@ -48,6 +43,7 @@
         $month=12;
         $year--;
     }
+    
     $days=date("t");
     $firstDate=strtotime(date("Y-m-")."1");
     $startweekday=date("w",$firstDate);
@@ -55,7 +51,7 @@
   ?>
     <h1>月曆</h1>
   <div class="container">
-    <h2><?echo $year."/".$month?></h2>
+    <h2><?php echo $year."/".$month?></h2>
       <a href="test.php?y=<?=$year?>&m=<?=($month-1)?>">Prev</a>
       <a href="test.php?y=<?=$year?>&m=<?=($month+1)?>">Next</a>
   </div>
