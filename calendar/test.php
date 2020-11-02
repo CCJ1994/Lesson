@@ -26,34 +26,54 @@
 <body>
   <?php
     date_default_timezone_set("Asia/Taipei");
-    $year=date("Y");
-    $month=date("m");
     
-    if(isset($_GET['y']) && isset($_GET['m'])){
-      $year=$_GET['y'];
+    
+    if(isset($_GET['Y'])){
+      $year=$_GET['Y'];
+    }else{
+      $year=date("Y");
+    }
+          
+    if(isset($_GET['m'])){
       $month=$_GET['m'];
-      
+    }else{
+      $month=date("m");
     }
 
-    if($month>12){
-        $month=1;
-        $year++;
-    }
-    if($month<1){
-        $month=12;
-        $year--;
-    }
+    $first="$year-$month-01";
+    $startweekday=date("w",strtotime($first));
+    $days=date("t",strtotime($first));
+
     
-    $days=date("t");
-    $firstDate=strtotime(date("Y-m-")."1");
-    $startweekday=date("w",$firstDate);
-    
+
+
   ?>
     <h1>月曆</h1>
   <div class="container">
-    <h2><?php echo $year."/".$month?></h2>
+    <h2><?php echo date("Y",strtotime($first))."/".$month?></h2>
+      <?php
+      if(($month-1)>0){
+      ?>
       <a href="test.php?y=<?=$year?>&m=<?=($month-1)?>">Prev</a>
+      <?php
+      }else{
+        ?>
+      <a href="test.php?y=<?=($year-1)?>&m=12">Prev</a>
+      <?php
+      }
+      ?>
+      <?php
+      if(($month+1)<13){
+      ?>
       <a href="test.php?y=<?=$year?>&m=<?=($month+1)?>">Next</a>
+      <?php
+      }else{
+        ?>
+      <a href="test.php?y=<?=($year+1)?>&m=1">Next</a>
+      <?php
+      }
+      ?>
+
   </div>
   <table>
     <tr>
