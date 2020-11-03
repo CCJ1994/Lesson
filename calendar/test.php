@@ -55,7 +55,7 @@
     $startweekday=date("w",$firstDate);
     // 最後一天在星期幾
     // $endweekday=date("w",strtotime("$year-$month-$days"));
-    
+    // 當月份有幾天
     $days=date("t",strtotime($first));
 
   ?>
@@ -88,6 +88,7 @@
         if($i==0 && $j<$startweekday){
           // echo "(30-$j+1)";
           echo "&nbsp;";
+
           // 最後一天後的留空格
         }else if(((7*$i)+1+$j-$startweekday)>$days){
           // echo ((7*$i)+1+$j-$days);
