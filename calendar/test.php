@@ -37,16 +37,22 @@
       $month=date("m");
     }
 
-
-    
-
-    if($month>12){
-        $month=1;
-        $year++;
+    // 上一個月
+    if($month<=1){
+      $prevYear=$year-1;
+      $prevMonth=12;
+    }else{
+      $prevYear=$year;
+      $prevMonth=$month-1;
     }
-    if($month<1){
-        $month=12;
-        $year--;
+
+    // 下一個月
+    if($month>=12){
+      $nextYear=$year+1;
+      $nextMonth=1;
+    }else{
+      $nextYear=$year;
+      $nextMonth=$month+1;
     }
     
     $first="$year-$month-01";
@@ -63,8 +69,8 @@
   <div class="container">
     <h2><?php echo date("Y",strtotime($first))."/".date("m",strtotime($first))?></h2>
       
-    <a href="test.php?y=<?=$year?>&m=<?=($month-1)?>">Prev</a>
-    <a href="test.php?y=<?=$year?>&m=<?=($month+1)?>">Next</a>
+    <a href="test.php?y=<?=$prevYear?>&m=<?=$prevMonth?>">Prev</a>
+    <a href="test.php?y=<?=$nextYear?>&m=<?=$nextMonth?>">Next</a>
 
   </div>
   <table>
