@@ -31,11 +31,14 @@
     if(isset($_GET['y']) && isset($_GET['m'])){
       $year=$_GET['y'];
       $month=$_GET['m'];
+      
     }else{
       $year=date("Y");
       $month=date("m");
     }
 
+
+    
 
     if($month>12){
         $month=1;
@@ -46,7 +49,6 @@
         $year--;
     }
     
-    $days=date("t",strtotime($month));
     $first="$year-$month-01";
     $firstDate=strtotime("$year-$month-01");
     // 第一天在星期幾
@@ -54,6 +56,8 @@
     // 最後一天在星期幾
     // $endweekday=date("w",strtotime("$year-$month-$days"));
     
+    $days=date("t",strtotime($first));
+
   ?>
     <h1>月曆</h1>
   <div class="container">
