@@ -50,7 +50,7 @@
   ?>
     <h1>月曆</h1>
   <div class="container">
-    <h2><?php echo date("Y",strtotime($first))."/".$month?></h2>
+    <h2><?php echo date("Y",strtotime($first))."/".date("m",strtotime($first))?></h2>
       <?php
       if(($month-1)>0){
       ?>
