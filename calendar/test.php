@@ -26,53 +26,41 @@
 <body>
   <?php
     date_default_timezone_set("Asia/Taipei");
+
     
-    
-    if(isset($_GET['Y'])){
-      $year=$_GET['Y'];
-    }else{
-      $year=date("Y");
-    }
-          
-    if(isset($_GET['m'])){
+    if(isset($_GET['y']) && isset($_GET['m'])){
+      $year=$_GET['y'];
       $month=$_GET['m'];
     }else{
+      $year=date("Y");
       $month=date("m");
     }
 
-    $first="$year-$month-01";
-    $startweekday=date("w",strtotime($first));
-    $days=date("t",strtotime($first));
 
+    if($month>12){
+        $month=1;
+        $year++;
+    }
+    if($month<1){
+        $month=12;
+        $year--;
+    }
     
-
-
+    $days=date("t",strtotime($month));
+    $first="$year-$month-01";
+    $firstDate=strtotime("$year-$month-01");
+    // 第一天在星期幾
+    $startweekday=date("w",$firstDate);
+    // 最後一天在星期幾
+    // $endweekday=date("w",strtotime("$year-$month-$days"));
+    
   ?>
     <h1>月曆</h1>
   <div class="container">
     <h2><?php echo date("Y",strtotime($first))."/".date("m",strtotime($first))?></h2>
-      <?php
-      if(($month-1)>0){
-      ?>
-      <a href="test.php?y=<?=$year?>&m=<?=($month-1)?>">Prev</a>
-      <?php
-      }else{
-        ?>
-      <a href="test.php?y=<?=($year-1)?>&m=12">Prev</a>
-      <?php
-      }
-      ?>
-      <?php
-      if(($month+1)<13){
-      ?>
-      <a href="test.php?y=<?=$year?>&m=<?=($month+1)?>">Next</a>
-      <?php
-      }else{
-        ?>
-      <a href="test.php?y=<?=($year+1)?>&m=1">Next</a>
-      <?php
-      }
-      ?>
+      
+    <a href="test.php?y=<?=$year?>&m=<?=($month-1)?>">Prev</a>
+    <a href="test.php?y=<?=$year?>&m=<?=($month+1)?>">Next</a>
 
   </div>
   <table>
@@ -91,15 +79,19 @@
       echo "<tr>";
       for($j=0;$j<7;$j++){
         echo "<td>";
+
+        // 1號前的留空格
         if($i==0 && $j<$startweekday){
           // echo "(30-$j+1)";
           echo "&nbsp;";
+          // 最後一天後的留空格
         }else if(((7*$i)+1+$j-$startweekday)>$days){
           // echo ((7*$i)+1+$j-$days);
-
+          
+          // 印月份日期
         }else{
           echo ((7*$i)+1+$j-$startweekday);
-
+        
         }
         echo "</td>";
       }
