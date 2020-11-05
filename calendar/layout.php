@@ -88,7 +88,12 @@
       $month=date("m");
       $year=date("Y");
     }
-    
+
+    // if(!empty($_GET['d'])){
+    //   $today=$_GET['d'];
+    // }else{
+    //   $today=date('d');
+    // }
 
     // prevmonth
     if($month<=1){
@@ -115,8 +120,7 @@
     // $endweekday=date("w",strtotime("$year-$month-$days"));
     // 當月份有幾天
     $days=date("t",strtotime($first));
-    $today=date('d');
-    $todayDate=date("$year-$month-$today");
+    $prevMonthdays=date("t",strtotime("$prevYear-$prevMonth-01"));
 ?>
 <div class="container">
     <div class="sidel"></div>
@@ -149,12 +153,14 @@
         
                 // 1號前的留空格
                 if($i==0 && $j<$startWeekday){
-                  // echo "(30-$j+1)";
+                  //想印上個月日期
+                  // echo ($prevMonthdays-$j+1);
                   echo "&nbsp;";
         
                   // 最後一天後的留空格
                 }else if(((7*$i)+1+$j-$startWeekday)>$days){
-                  
+                  //印下個月日期
+                  // echo ((7*$i)+1+$j-$startWeekday-$days);
                   
                   // 印日期
                 }else{
