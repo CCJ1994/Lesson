@@ -28,13 +28,16 @@
     date_default_timezone_set("Asia/Taipei");
 
     
-    if(isset($_GET['y']) && isset($_GET['m'])){
-      $year=$_GET['y'];
+    if(isset($_GET['m'])){
       $month=$_GET['m'];
-      
+    }else{
+      $month=date("m");
+    }
+
+    if(isset($_GET['y'])){
+      $year=$_GET['y'];      
     }else{
       $year=date("Y");
-      $month=date("m");
     }
 
     // 上一個月
@@ -69,8 +72,8 @@
   <div class="container">
     <h2><?php echo date("Y",strtotime($first))."/".date("m",strtotime($first))?></h2>
       
-    <a href="test.php?y=<?=$prevYear?>&m=<?=$prevMonth?>">Prev</a>
-    <a href="test.php?y=<?=$nextYear?>&m=<?=$nextMonth?>">Next</a>
+    <a href="test.php?y=<?=$prevYear;?>&m=<?=$prevMonth;?>">Prev</a>
+    <a href="test.php?y=<?=$nextYear;?>&m=<?=$nextMonth;?>">Next</a>
 
   </div>
   <table>
