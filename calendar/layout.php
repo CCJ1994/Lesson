@@ -132,6 +132,7 @@
     $days=date("t",strtotime($first));
     $prevMonthdays=date("t",strtotime("$prevYear-$prevMonth-01"));
     $today=date("D");
+    $todate=date("d");
 ?>
 <div class="container">
     <div class="sidel"></div>
@@ -144,7 +145,7 @@
               <span class="navbar"><?php echo date("M",strtotime($first)).'-'.date("Y",strtotime($first))?></span>
               <a class="navbar" href="layout.php?y=<?=$nextYear;?>&m=<?=$nextMonth;?>">&gt;</a>
               <!-- 今天星期幾 -->
-              <div class="today"><?php echo $today."." ?></div>
+              <div class="today"><?php echo $today.".&nbsp;".$todate ?></div>
             </th>
           </tr>
           <tr>
