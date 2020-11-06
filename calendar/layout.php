@@ -63,6 +63,12 @@
       height: 50px;
       color: #57606f;
     }
+    .today{
+      text-align:right;
+      padding-right:50px;
+      font-size:50px;
+
+    }
 
     table td {
       vertical-align:top;
@@ -74,6 +80,9 @@
     }
     table td:hover{
       background-color: #fff;
+    }
+    span{
+      color:lightgrey;
     }
   </style>
 </head>
@@ -89,8 +98,9 @@
       $year=date("Y");
     }
 
-    // if(!empty($_GET['d'])){
-    //   $today=$_GET['d'];
+    if(!empty($_GET['d'])){
+      $today=$_GET['d'];
+    }
     // }else{
     //   $today=date('d');
     // }
@@ -121,6 +131,7 @@
     // 當月份有幾天
     $days=date("t",strtotime($first));
     $prevMonthdays=date("t",strtotime("$prevYear-$prevMonth-01"));
+    $today=date("D");
 ?>
 <div class="container">
     <div class="sidel"></div>
@@ -132,6 +143,8 @@
               <a class="navbar" href="layout.php?y=<?=$prevYear;?>&m=<?=$prevMonth;?>">&lt;</a>
               <span class="navbar"><?php echo date("M",strtotime($first)).'-'.date("Y",strtotime($first))?></span>
               <a class="navbar" href="layout.php?y=<?=$nextYear;?>&m=<?=$nextMonth;?>">&gt;</a>
+              <!-- 今天星期幾 -->
+              <div class="today"><?php echo $today."." ?></div>
             </th>
           </tr>
           <tr>
@@ -154,13 +167,13 @@
                 // 1號前的留空格
                 if($i==0 && $j<$startWeekday){
                   //印上個月日期
-                  echo ($prevMonthdays-$startWeekday+1+$j);
+                  echo "<span>".($prevMonthdays-$startWeekday+1+$j)."</span>";
                   // echo "&nbsp;";
         
                   // 最後一天後的留空格
                 }else if(((7*$i)+1+$j-$startWeekday)>$days){
                   //印下個月日期
-                  echo ((7*$i)+1+$j-$startWeekday-$days);
+                  echo "<span>".((7*$i)+1+$j-$startWeekday-$days)."</span>";
                   
                   // 印日期
                 }else{
