@@ -13,7 +13,7 @@
     .container{
       display: flex;
       width: 900px;
-      margin: 100px auto;
+      margin: 50px auto;
       border: 1px solid #f1f2f6;
       border-radius: 5px;
       box-shadow: 0px 5px 10px #f1f2f6;
@@ -145,7 +145,7 @@
               <span class="navbar"><?php echo date("M",strtotime($first)).'-'.date("Y",strtotime($first))?></span>
               <a class="navbar" href="layout.php?y=<?=$nextYear;?>&m=<?=$nextMonth;?>">&gt;</a>
               <!-- 今天星期幾 -->
-              <div class="today"><?php echo $today.".&nbsp;".$todate ?></div>
+              <div class="today"><?php echo $todate."&nbsp;".$today."." ?></div>
             </th>
           </tr>
           <tr>
