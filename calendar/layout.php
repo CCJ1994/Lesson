@@ -6,8 +6,8 @@
   <title>Document</title>
   <style>
      *{
-      /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-      font-family: raleway;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      /* font-family: raleway; */
     }
     
     .container{
@@ -153,14 +153,14 @@
         
                 // 1號前的留空格
                 if($i==0 && $j<$startWeekday){
-                  //想印上個月日期
-                  // echo ($prevMonthdays-$j+1);
-                  echo "&nbsp;";
+                  //印上個月日期
+                  echo ($prevMonthdays-$startWeekday+1+$j);
+                  // echo "&nbsp;";
         
                   // 最後一天後的留空格
                 }else if(((7*$i)+1+$j-$startWeekday)>$days){
                   //印下個月日期
-                  // echo ((7*$i)+1+$j-$startWeekday-$days);
+                  echo ((7*$i)+1+$j-$startWeekday-$days);
                   
                   // 印日期
                 }else{
