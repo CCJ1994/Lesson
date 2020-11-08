@@ -7,7 +7,7 @@ $pdo=new PDO($dsn,'root','');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>學生名冊</title>
   <style>
     table{
       margin:auto;
@@ -17,9 +17,9 @@ $pdo=new PDO($dsn,'root','');
       padding:10px;
     }
     table td{
-      padding:5px 2.5px;
+      padding:10px 5px;
       text-align:center;
-      border:1px solid gray;
+      border:1px solid #ccc;
     }
     .selector{
       width:50%;
@@ -46,14 +46,14 @@ $pdo=new PDO($dsn,'root','');
         }
       ?>
       </select>
-      <input type="sumbit" value="查詢">
+      <input type="submit" value="查詢">
     </form>
 
     <form action="index2.php" method="post">
       <select name="school" id="">
       <?php
         $sql="select * from graduate_school";
-        $school=$pdo->query($sql)->fetchALL();
+        $schools=$pdo->query($sql)->fetchALL();
         foreach($schools as $school){
           echo "<option value='{$school['id']}'>{$school['name']}</option>";
         }
@@ -98,6 +98,7 @@ $rows=$pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
   <tr>
     <td>學號</td>
     <td>姓名</td>
+    <td>性別</td>
     <td>身份證字號</td>
     <td>生日</td>
     <td>科系</td>
