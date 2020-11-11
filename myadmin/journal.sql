@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 11 月 08 日 14:03
+-- 產生時間： 2020 年 11 月 11 日 16:31
 -- 伺服器版本： 10.4.14-MariaDB
 -- PHP 版本： 7.4.10
 
@@ -100,7 +100,9 @@ INSERT INTO `daily` (`id`, `date`, `time`, `item`, `amount`, `account`, `type`, 
 (7, '2020-01-13', '23:02:09', '電話費', 30, 2, 1, 7, 1, NULL),
 (8, '2020-01-12', '14:41:41', '娛樂', 7, 2, 1, 6, 2, NULL),
 (9, '2020-01-12', '11:03:20', '早餐', 20, 1, 1, 1, 1, NULL),
-(10, '2020-01-21', '16:05:48', '鞋子', 220, 2, 1, 2, 2, NULL);
+(10, '2020-01-21', '16:05:48', '鞋子', 220, 2, 1, 2, 2, NULL),
+(11, '2020-01-25', '11:27:24', '飲料', 5, 2, 1, 1, NULL, NULL),
+(12, '2020-01-21', '13:29:40', '薪水', 1657, 1, 2, 7, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -200,7 +202,7 @@ ALTER TABLE `category`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `daily`
 --
 ALTER TABLE `daily`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '序號', AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '序號', AUTO_INCREMENT=13;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `plan`
