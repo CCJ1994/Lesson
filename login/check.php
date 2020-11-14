@@ -24,6 +24,8 @@ if(!empty($check)){
   $member=$pdo->query($member_sql)->fetch();
   $role=$member['role'];
 
+  setcookie("login",$acc,time()+3600);
+
 
     switch($role){
       case "會員" :
