@@ -1,41 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include_once ('header.php');
+?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>登入畫面</title>
-  <style>
-    body {
-      background-color: #bdc3c7;
-      text-align: center;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .container {
-      margin: 100px auto;
-      width: 400px;
-      height: 300px;
-      border: 1px solid grey;
-      background-color: #eee;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <h2>會員登入</h2>
-    <hr>
-    <form action="check.php" method="post">
-      <p>帳號：<input type="text"></p>
-      <p>密碼：<input type="password"></p>
-      <p>
-        <a href="forget_pw.php">忘記密碼？</a>
-        <a href="register.php">註冊新帳號</a>
-      </p>
-      <input type="submit" value="登入">
-    <form>
+  <div class="container mt-5">
+    <div class="col-6 border bg-light m-auto" style="height:400px;box-shadow:1px 1px 10px #185761">
+    <div class="text-center"><?php if(isset($_GET['meg'])){ echo $_GET['meg'] ;}?> </div>
+      <h5 class="text-center py-3 border-bottom">會員登入</h5>
+      <form action="check.php" class="mt-3 col-6 mx-auto" method="post">
+        <p class="text-center">帳號：<input type="text" name="acc"></p>
+        <p class="text-center">密碼：<input type="password" name="pw"></p>
+        <p class="d-flex justify-content-around" style="font-size:0.87rem">
+          <a href="forget_pw.php">忘記密碼?</a>
+          <a href="register.php">註冊新帳號</a>
+        </p>
+        <p class="text-center"><input type="submit" value="登入"></p>
+      </form>
+    </div>
   </div>
-</body>
-
-</html>
+<?php
+include_once ('footer.php');
+?>
