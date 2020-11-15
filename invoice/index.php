@@ -41,7 +41,13 @@
             <div class="col-lg-8 col-md-12  d-flex p-3 mx-auto border">
                 <?php 
                 
-                include("main.php");
+                if(isset($_GET['do'])){
+                    $file=$_GET['do'].".php";
+                    include $file;
+                }else{
+
+                    include("main.php");
+                }
                 
                 ?>
             </div>
