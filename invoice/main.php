@@ -1,21 +1,43 @@
-<form action="api/add_invoice.php" method="post">
-                    <div>日期：<input type="date" name="date"></div>
-                    期別：<select name="period">
-                        <option value="1">1,2月</option>
-                        <option value="2">3,4月</option>
-                        <option value="3">5,6月</option>
-                        <option value="4">7,8月</option>
-                        <option value="5">9,10月</option>
-                        <option value="6">11,12月</option>
-                    </select>
-                    <div>發票號碼：
-                        <input type="text" name="code" style="width:50px;">
-                        <input type="number" name="number" style="width:150px;" min="00000001" max="99999999">
-                    </div>
-                    <div>發票金額：
-                        <input type="number" name="payment" min="0">
-                    </div>
-                    <div class="text-center">
-                        <input type="submit" value="送出">
-                    </div>
-                </form>
+<form action="api/add_invoice.php" method="post"> 
+      <div class="date">
+        <div class="date1">
+          期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別
+          <select class="dateP" name="period">
+            <option value="1">01,02月</option>
+            <option value="2">03,04月</option>
+            <option value="3">05,06月</option>
+            <option value="4">07,08月</option>
+            <option value="5">09,10月</option>
+            <option value="6">11,12月</option>
+          </select>
+        </div>
+        <div class="date2">
+          日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期
+          <input class="dateD" type="date" name="date">
+        </div>
+      </div>
+      <div class="num">發票號碼
+        <input class="num1" type="text" name="code">
+        <input class="num2" type="number"name="number" min="1" max="99999999">
+      </div>
+      <div class="pay">消費金額
+        <input class="pay1" type="number" name="payment" min="1">
+      </div>
+      <div class="item">
+        品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;項
+        <input class="item1" type="text">
+        
+      </div>
+      <div class="note">
+        備&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;註
+        <input class="note1" type="text" name="note">
+      </div>
+      <div class="btm">
+        <div class="btm1">
+          <input class="btm2" type="submit" value="儲存">
+        </div>
+        <div class="btm1">
+          <input class="btm2" type="reset" value="重填">
+        </div>
+      </div>
+    </form>
