@@ -23,7 +23,7 @@
       <div class="pay">消費金額
         <input class="pay1" type="number" name="payment" min="1">
       </div>
-      <div class="item">
+      <!-- <div class="item">
         品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;項
         <input class="item1" type="text">
         
@@ -31,7 +31,7 @@
       <div class="note">
         備&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;註
         <input class="note1" type="text" name="note">
-      </div>
+      </div> -->
       <div class="btm">
         <div class="btm1">
           <input class="btm2" type="submit" value="儲存">
