@@ -1,5 +1,16 @@
 <?php
 session_start();
+function errFeedback($field){
+        if(!empty($_SESSION['err'][$field])){
+          foreach($_SESSION['err'][$field] as $err){
+            echo "<div style='font-size:12px;color:red'>";
+            echo $err;
+            echo "</div>";
+            }
+        }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -15,37 +26,73 @@ session_start();
   <form action="check.php" method="post">
     <ul class="list-group col-md-6 mx-auto">
       <li class="list-group-item">
-      *帳號:<input type="text" name="acc"><br>
+      *帳號:<input type="text" name="acc">
+      <?php errFeedBack('acc');  ?>
+
       <?php 
-      if(!empty($_SESSION['err']) && isset($_SESSION['err']['acc']['empty'])){ ;?>
-      <span style="color:red; font-size:12px;">帳號欄位不得為空</span>
+      // if(!empty($_SESSION['err']) && isset($_SESSION['err']['acc']['empty'])){ ;?>
+      <!-- <span style="color:red; font-size:12px;">帳號欄位不得為空</span> -->
       <?php 
-      };?>
+      // };?>
       <?php 
-      if(!empty($_SESSION['err']) && isset($_SESSION['err']['acc']['len'])){ ;?>
-      <span style="color:red; font-size:12px;">帳號長度必須在4-10字之間</span>
+      // if(!empty($_SESSION['err']) && isset($_SESSION['err']['acc']['len'])){ ;?>
+      <!-- <span style="color:red; font-size:12px;">帳號長度必須在4-10字之間</span> -->
       <?php 
-      };?>
+      // };?>
+
       </li>
       <li class="list-group-item">
-      *密碼:<input type="password" name="pw"><br>
+      *密碼:<input type="password" name="pw">
+      <?php errFeedBack('pw');  ?>
+
       <?php 
-      if(isset($_SESSION['err']) && isset($_SESSION['err']['pw']['empty'])){;?>
-      <span style="color:red; font-size:12px;">密碼欄位不得為空</span>
+      // if(isset($_SESSION['err']) && isset($_SESSION['err']['pw']['empty'])){;?>
+      <!-- <span style="color:red; font-size:12px;">密碼欄位不得為空</span> -->
       <?php 
-      };?>
+      // };?>
       <?php 
-      if(!empty($_SESSION['err']) && isset($_SESSION['err']['pw']['len'])){ ;?>
-      <span style="color:red; font-size:12px;">帳號長度必須在8-16字之間</span>
-        
+      // if(!empty($_SESSION['err']) && isset($_SESSION['err']['pw']['len'])){ ;?>
+      <!-- <span style="color:red; font-size:12px;">帳號長度必須在8-16字之間</span>      -->
       <?php 
-      };?>
+      // };?>
+
       </li>
-      <li class="list-group-item">姓名:<input type="text" name="name"></li>
+      <li class="list-group-item">
+      姓名:<input type="text" name="name">
+      <?php errFeedBack('name');  ?>
+
+      <?php 
+      // if(isset($_SESSION['err']) && isset($_SESSION['err']['name']['empty'])){;?>
+      <!-- <span style="color:red; font-size:12px;">密碼欄位不得為空</span> -->
+      <?php 
+      // };?>
+
+      <?php 
+      // if(!empty($_SESSION['err']) && isset($_SESSION['err']['name']['len'])){ ;?>
+      <!-- <span style="color:red; font-size:12px;">密碼長度必須在1-8字之間</span>  -->
+      <?php 
+      // };?>
+
+      </li>
       <li class="list-group-item">生日:<input type="date" name="birthday"></li>
       <li class="list-group-item">地址:<input type="text" name="addr"></li>
       <li class="list-group-item">電話:<input type="number" name="tel"></li>
-      <li class="list-group-item">email:<input type="text" name="email"></li>
+      <li class="list-group-item">
+      email:<input type="text" name="email">
+      <?php errFeedBack('email');  ?>
+
+      <?php 
+      if(isset($_SESSION['err']) && isset($_SESSION['err']['email']['empty'])){;?>
+      <span style="color:red; font-size:12px;">信箱欄位不得為空</span>
+      <?php 
+      };?>
+      <?php 
+      if(isset($_SESSION['err']) && isset($_SESSION['err']['email']['email'])){;?>
+      <span style="color:red; font-size:12px;">信箱格式錯誤</span>
+      <?php 
+      };?>
+
+      </li>
     </ul>
     <div class="mx-auto" style="width:200px;">
       <input class="btn btn-primary" type="submit" value="註冊">
