@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    price=20000;//臨時變數，僅建議於不重要的暫存用
+    var price=10000; //用var宣告變數 全域變數
+    
+    var a="A";
+    function show(){
+      var b="B";
+      console.log(a,b);
+    }
+    // show();
+    // console.log(a,b);
+    //上面兩個執行結果不一樣 因為b不是全域變數
+    /////////////////////const常態變數 ，宣告後不可改內容
+    const c="C";
+    console.log(c);
+    // c="c"; 變數名稱重複
+    //////////////////let獨立變數，指獨立在範圍{}內，不會跟{}外的打架
+
+    let d="D";
+    if(true){
+      let d="E";
+      console.log(d);
+    }
+    console.log(d);
+
+    const sayYa=()=>{
+      console.log("hiihihi");
+    }
+
+    //null(沒有內容),undefined(沒有被定義宣告),empty(空字串)
+    let AA=null;
+    let BB;
+    let CC="";
+
+
+  </script>
+</body>
+</html>
