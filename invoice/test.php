@@ -1,65 +1,25 @@
 <?php
-
-// 連線資料庫
-$dsn="mysql:host=localhost;dbname=invoice;charset=utf8";
-$pdo=new PDO($dsn,'root','');
-
-// 時區設定
-date_default_timezone_set("Asia/Taipei");
-
-// 使用session
-session_start();
+include_once "base.php";
 
 
-$awardStr=['頭','二','三','四','五','六'];
-
-// 驗證函式
-function accept($field,$meg='此欄位不得為空'){
-  if(empty($_POST[$field])){
-      $_SESSION['err'][$field]['empty']=$meg;
-  }
-}
-
-
-function length($field,$min,$max,$meg="長度不足"){
-  if(strlen($_POST[$field])>$max || strlen($_POST[$field]) < $min){
-      $_SESSION['err'][$field]['len']=$meg;
-  }
-
-}
-
-function errFeedBack($field){
-  if(!empty($_SESSION['err'][$field])){
-
-      foreach($_SESSION['err'][$field] as $err){
-          echo "<div style='font-size:12px;color:red'>";
-          echo $err;
-          echo "</div>";
-      }
-  }
-}
-
-
-
-
-// C R U D 函式
-
+//取得單一資料的自訂函式
 function find($table,$id){
-  global $pdo;
-  $sql="select * from $table where ";
-  if(is_array($id)){
-      foreach($id as $key => $value){
-          $tmp[]=sprintf("`%s`='%s'",$key,$value);
-          //$tmp[]="`".$key."`='".$value."'";
-      }
-      $sql=$sql.implode(' && ',$tmp);
-  }else{
-      $sql=$sql . " id='$id' ";
-  }
-  $row=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    global $pdo;
+    $sql="select * from $table where ";
+    if(is_array($id)){
+        foreach($id as $key => $value){
+            $tmp[]=sprintf("`%s`='%s'",$key,$value);
+            //$tmp[]="`".$key."`='".$value."'";
+        }
+        $sql=$sql.implode(' && ',$tmp);
+    }else{
+        $sql=$sql . " id='$id' ";
+    }
+    $row=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 
-  return $row;
+    return $row;
 }
+
 
 function all($table,...$arg){
   global $pdo;
@@ -93,6 +53,14 @@ if(isset($arg[0])){
   return $pdo->query($sql)->fetchAll();
 }
 
+// print_r(all('invoices'));
+// echo "<hr>";
+// print_r(all('invoices',['code'=>"GD",'period'=>6]));
+// echo "<hr>";
+// print_r(all('invoices',['code'=>"FF",'period'=>1])," order by date desc");
+// echo "<hr>";
+// print_r(all('invoices'," limit 5"));
+
 function del($table,$id){
   global $pdo;
   $sql="delete from $table where ";
@@ -108,6 +76,18 @@ function del($table,$id){
   $row=$pdo->exec($sql);
   return $row;
 }
+
+// $def=['code'=>'FF'];
+// echo del('invoices',$def);
+
+$row=find('invoices',22);
+echo"<pre>";
+print_r($row);
+echo"</pre>";
+// update invoices set `code`='AA',`payment`='1' where `id`='22';
+$row['code']='AA';
+$row['payment']=1;
+update('invoices',$row);
 
 function update($table,$array){
   global $pdo;
@@ -126,7 +106,7 @@ function update($table,$array){
 
 function insert($table,$array){
   global $pdo;
-  $sql="insert into $table(`" . implode("`,`",array_keys($array)) . "`) values('".implode("','",$array)."')";
+  $sql="insert into $table(`" .implode("`,`",arry_keys($array)). "`) values('".impolde("','").$array."')";
 
   $pdo->exec($sql);
 }
@@ -141,14 +121,5 @@ function save($table,$array){
   }
 }
 
-
-function to($url){
-  header("location:".$url);
-}
-
-function q($sql){
-  global $pdo;
-  return $pdo->query($sql)->fetchAll();
-}
 
 ?>

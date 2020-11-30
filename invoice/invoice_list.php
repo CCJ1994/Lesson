@@ -2,11 +2,26 @@
 <?php
 include_once "base.php";
 
-$sql="select * from `invoices` order by date desc ";
-$rows=$pdo->query($sql)->fetchALL();
+if(isset($_GET['period'])){
+    $period=$_GET['period'];
+}else{
+    $period=ceil(date("m")/2);
+}
+
+// $sql="select * from `invoices` where period='$period' order by date desc ";
+// $rows=$pdo->query($sql)->fetchALL();
+
+$rows=all('invoices',['period'=>$period],' order by date desc ');
 
 ?>
-
+<div class="row" style="list-style-type:none;">
+    <li class="px-4"><a href="?do=invoice_list&period=1">1-2月</a></li>
+    <li class="px-4"><a href="?do=invoice_list&period=2">3-4月</a></li>
+    <li class="px-4"><a href="?do=invoice_list&period=3">5-6月</a></li>
+    <li class="px-4"><a href="?do=invoice_list&period=4">7-8月</a></li>
+    <li class="px-4"><a href="?do=invoice_list&period=5">9-10月</a></li>
+    <li class="px-4"><a href="?do=invoice_list&period=6">11-12月</a></li>
+</div>
 <table class="table text-center">
 <thead>
     <tr>
@@ -16,10 +31,11 @@ $rows=$pdo->query($sql)->fetchALL();
     <th>操作</th>
     </tr>
 </thead>
+<tbody>
+
 <?php
 foreach($rows as $row){
 ?>
-<tbody>
     <tr>
         <td><?=$row['code'].$row['number'];?></td>
         <td><?=$row['date'];?></td>
@@ -31,11 +47,14 @@ foreach($rows as $row){
             <a href="?do=del_invoice&id=<?=$row['id'];?>">
                 <button class="btn btn-danger">刪除</button>
             </a>
+            <a href="?do=award&id=<?=$row['id'];?>">
+                <button class="btn btn-success">對獎</button>
+            </a>
         </td>
     </tr>
-</tbody>
-
 <?php
 }
 ?>
+</tbody>
+
 </table>
