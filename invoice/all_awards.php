@@ -1,9 +1,49 @@
 <?php
 include_once "base.php";
 
-$inv_id=$_GET['id'];
-$invoice=$pdo->query("select * from invoices where id='$inv_id'")->fetch();
-$number=$invoice['number'];
+$period_str=[
+    1=>"1,2月",
+    2=>"3,4月",
+    3=>"5,6月",
+    4=>"7,8月",
+    5=>"9,10月",
+    6=>"11,12月"
+];
+
+echo "你要對的發票是".$_GET['year']."年的";
+echo $period_str[$_GET['period']]."的發票";
+
+// 撈出該期的所有發票
+
+$sql="select * from invoices where left(date,4)='{$_GET['year']}' && period='{$_GET['period']}' order by date desc";
+$invoices=$pdo->query($sql)->fetchALL();
+
+
+echo "<br>".count($invoices)."筆<br>";
+// echo "<pre>";
+// print_r($invoices);
+// echo "</pre>";
+
+// 撈出該期的開講獎號
+
+$sql="select * from award_numbers where year='{$_GET['year']}' && period='{$_GET['period']}'";
+$award_numbers=$pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
+
+if(!empty($award_numbers)){
+  // echo "<pre>";
+  // print_r($award_numbers);
+  // echo "</pre>";
+}else{
+  echo "尚未開獎";
+}
+
+
+// 開始對獎
+$all_res=-1;
+foreach($invoices as $inv){
+  
+  //對獎程式
+  $number=$inv['number'];
 
 // echo "<pre>";
 // print_r($invoice);
@@ -13,7 +53,7 @@ $number=$invoice['number'];
 // 1.確認期別->目前發票的日期作分析
 // 2.得捯期別資料後->撈出該期的開獎號碼
 
-$date=$invoice['date'];
+$date=$inv['date'];
 // explode('-',$date)取得日期資料，陣列的第二個元素就是月份
 // 月份就可以推算期數，有了期數及年份就可以找到開獎的號碼
 // $arry=explode('-',$date)
@@ -22,12 +62,8 @@ $date=$invoice['date'];
 $year=explode('-',$date)[0];
 $period=ceil(explode('-',$date)[1]/2);
 
-$awards=$pdo->query("select * from award_numbers where year='$year' && period='$period'")->fetchALL();
-// echo "<pre>";
-// print_r($awards);
-// echo "</pre>";
-$all_res=-1;
-foreach($awards as $award){
+
+foreach($award_numbers as $award){
     switch($award['type']){
         case 1:
             if($award['number']==$number){
@@ -72,8 +108,15 @@ foreach($awards as $award){
         break;
     }
 }
-if($all_res==-1){
-    echo "很可惜都沒中";
 }
+  if($all_res==-1){
+    echo "很可惜都沒中";
+  }
+
+
+
+
 
 ?>
+
+

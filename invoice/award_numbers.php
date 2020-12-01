@@ -38,6 +38,14 @@ foreach($awards as $aw){
 }
 
 ?>
+<div class="row" style="list-style-type:none;">
+  <li class="px-4"><a href="?do=award_numbers&pd=<?=$year;?>-1">1-2月</a></li>
+  <li class="px-4"><a href="?do=award_numbers&pd=<?=$year;?>-2">3-4月</a></li>
+  <li class="px-4"><a href="?do=award_numbers&pd=<?=$year;?>-3">5-6月</a></li>
+  <li class="px-4"><a href="?do=award_numbers&pd=<?=$year;?>-4">7-8月</a></li>
+  <li class="px-4"><a href="?do=award_numbers&pd=<?=$year;?>-5">9-10月</a></li>
+  <li class="px-4"><a href="?do=award_numbers&pd=<?=$year;?>-6">11-12月</a></li>
+</div>
 <table class="table table-bordered table-sm" summary="統一發票中獎號碼單">
   <tbody>
     <tr>
@@ -121,3 +129,6 @@ foreach($awards as $aw){
     </tr>
   </tbody>
 </table>
+<a href="?do=all_awards&year=<?=$year;?>&period=<?=$period;?>">
+  <button class="btn btn-primary">對獎</button>
+</a>
