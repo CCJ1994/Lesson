@@ -32,12 +32,17 @@
     tmax=finalTime.getTime();
 
     beto=Math.floor((tmax-tmin)/1000);
-    
+    console.log(beto);
+    // const bday=Math.floor(beto/60/60/24);
+    // const bhour=Math.floor((beto/60/60/24-bday)*24);
+    // const bmin=Math.floor(((beto/60/60/24-bday)*24-bhour)*60);
+    // const bsec=Math.floor((((beto/60/60/24-bday)*24-bhour)*60-bmin)*60);
     const bday=Math.floor(beto/60/60/24);
-    const bhour=Math.floor((bday%(60/24)));
-    const bmin=Math.floor((beto/60/24)%24);
-    const bsec=Math.floor(beto/60/60/24);
-    
+    const bhour=Math.floor((beto/60/60)%24);
+    const bmin=Math.floor((beto/60)%60);
+    const bsec=Math.floor((beto%60));
+
+
     console.log(`距離今年只剩下${bday}天${bhour}時${bmin}分${bsec}`)
     
     //set系列
@@ -48,5 +53,6 @@
     mdytime.setDate(mdytime.getDate()+1);
 
   </script>
+  
 </body>
 </html>
