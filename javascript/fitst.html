@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <!----下面函式同等echo "<h2>.......</h2>"---->
+  <script>
+    // window.onload=function(){ //當網頁載入完畢時觸發匿名函式
+    //   writeIt();
+    // }
+  </script>
+  <h1>hello world</h1>
+  <h2 id="demo"></h2>
+<!-- 練習:使用document.write 輸出99乘法表 -->
+<section class="container">
+  <script>
+    document.write ("<div>");
+      for(let i=2,j=1; i<10 ; j++){
+      document.write(`${i}*${j}=${i*j}`);
+      if(j==1) document.write("<div>");
+
+      if(j==9){
+        j=0;i++;
+        document.write("<div>");
+        }
+        
+    } 
+      document.write ("</div>");
+
+;
+      
+
+  </script>
+</section>
+  
+  <script src="test.js"></script>
+    
+    
+</body>
+</html>

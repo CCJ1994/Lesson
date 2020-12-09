@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event事件</title>
+  <script>
+    function fn(e){
+      alert(e);
+    }
+    // let demo=null;
+    function whatIt(e){
+      demo=e;
+      console.log(e.value);
+
+      if(e.style.fontSize) e.style.fontSize=null;
+      else{
+
+        // e.style="color:red;font-size:2rem"; 
+        e.style.color="red";//直接對物件的值進行修改
+        e.style.fontSize="2rem";//直接對物件的值進行修改
+      }
+    }
+  </script>
+</head>
+<body>
+  <input type="button" value="onclick" onclick="fn('這是click')">
+  <hr>
+  <input type="button" value="onclick2" onclick="whatIt(this)">
+  <input type="button" value="onmousedown" onmousedown="whatIt(this)">
+  <input type="button" value="onmouseup" onmouseup="whatIt(this)">
+  <input type="button" value="onmouseover" onmouseover="whatIt(this)">
+  <input type="button" value="onmouseout" onmouseout="whatIt(this)">
+  <input type="text" value="onchange" onchange="whatIt(this)">
+  <input type="text" value="onfocus" onfocus="whatIt(this)">
+  <input type="text" value="onblur" onblur="whatIt(this)">
+<hr>
+  <div id="fakebtn"></div>
+  <button id="keycode">press keyboard</button>
+  <script>
+    let fakebtn=document.getElementById("fakebtn");
+    document.getElementById("fakebtn").innerHTML="假按鈕";
+    fakebtn.style="background: antiquewhite;box-shadow: 1px 1px 1px 0 black;cursor: alias; display:inline; padding:5px;";
+    fakebtn.onclick=function(){
+      console.log(this.style.backgroundColor);//this 等於當下的物件(fakebtn)只能在匿名函式用
+    }
+
+    /*event 事件 on keybored*/
+    let keyword=new Array();
+    keyword[87]="w";
+    keyword[83]="5";
+    keyword[65]="A";
+    keyword[68]="D";
+    document.onkeydown=()=>{
+      console.log(event.keyCode);
+      
+      document.getElementById("keycode").innerHTML=keyword[event.which];
+    }
+  </script>
+</body>
+</html>

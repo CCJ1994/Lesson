@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="https//www.google.com" title="Google" name="aname" id="aid">Google</a>
+  <script>
+let aa=document.getElementById("aid");
+aa.attributes.title.value="ccc";
+aa.title="ddd";//更改title的值 同上效果
+aa.setAttribute("class","alink");//aa.className="alink"
+// aa.removeAttribute("title")
+  </script>
+</body>
+</html>
