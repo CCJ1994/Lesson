@@ -6,33 +6,37 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="demo"></div>
+  <div id="demo" style="width: 100px; height: 100px; background-color:red;"></div>
   <hr>
-  <input type="button" value="正方形" onclick="fn1()"></input>
-  <input type="button" value="圓形" onclick="fn2()"></input>
-  <input type="button" value="三角形" onclick="fn3()"></input>
-  <input type="text" onchange="fn4()"></input>
+  <input type="button" value="正方形" onclick="fn1()">
+  <input type="button" value="圓形" onclick="fn2()">
+  <input type="button" value="三角形" onclick="fn3()">
+  <input type="text" onchange="fn4(this.value)">
   <script>
+
+
 let shape=document.getElementById("demo");
-shape.style="width: 100px; height: 100px; background-color:red;";
+let color=shape.style.backgroundColor;
 
 function fn1(){
-let shape=document.getElementById("demo");
-shape.style.borderRadius="0";
+shape.style="width: 100px; height: 100px; background-color:"+color;
 }
 function fn2(){
 let shape=document.getElementById("demo");
-shape.style="width: 100px; height: 100px; background-color:red;border-radius:50%";
+shape.style="width: 100px; height: 100px; background-color:"+color+";border-radius:50%";
 }
 function fn3(){
 let shape=document.getElementById("demo");
-shape.style="width:0;height:0;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:100px solid red;";
+shape.style="width:0;height:0;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:100px solid "+color+";";
 }
-function fn4(){
-  let change=document.getElementById("demo");
-  change.style.backgroundColor;
+function fn4(change){
+  shape.style.backgroundColor=change;
+  color=change;
 }
 
+const msg=prompt("0~10猜數字");
+    if(msg==1) alert(`your answer is ${msg},答對了`);
+    else alert(`再猜一次`);
 
   </script>
 </body>
