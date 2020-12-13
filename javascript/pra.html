@@ -34,9 +34,49 @@ function fn4(change){
   color=change;
 }
 
-const msg=prompt("0~10猜數字");
-    if(msg==1) alert(`your answer is ${msg},答對了`);
-    else alert(`再猜一次`);
+
+// const msg=prompt("0~5猜數字");
+// let num=myrand(0,5);
+//     if(msg==myrand(0,5))alert(`your answer is ${msg},答對了`);
+//     else switch(msg!=num){
+//         case num<msg: 
+//         prompt(`0~${msg}再猜一次`);
+//         break;
+//         case msg>num: 
+//         prompt(`${msg}~5再猜一次`);
+//         break;
+//     }
+
+function myrand(min,max){
+  return Math.floor(Math.random()*(max-min+1))+min; //min~max
+}
+var n=myrand(0,99);
+var num = 0;   
+num = prompt("請輸入0~99數字:", "");
+
+if (num == null || num == n)  //剛開始將直接猜對或是未輸入者做判斷處理
+ if(num==null) {
+alert(`你沒有輸入，答案是${n}`);
+} else {
+alert(`答對了${n}`);
+}
+for (var i=1; i<=num; i++)  {  //計算次數，並迴圈執行判斷
+if(num>n) {
+num = prompt("你輸入"+ num +"太高了，請在輸入:0~00之間","");
+continue;
+} else if (num<n) {
+num = prompt("你輸入"+ num +"太低了，請在輸入:0~99之間","");
+continue;
+} else if (num == n) {
+alert(`答對了${n}`);
+break;
+} else {
+  alert(`你放棄了，答案是${n}`);
+  break;
+  
+  }
+}
+alert(`共猜${i}次`); //跳出迴圈並執行計算次數的工作     
 
   </script>
 </body>
