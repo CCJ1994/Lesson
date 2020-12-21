@@ -38,22 +38,23 @@ function fn4(change){
 function myrand(min,max){
   return Math.floor(Math.random()*(max-min+1))+min; //min~max
 }
-var n=myrand(0,99);
-var num = 0;   
-num = prompt("請輸入0~99數字:", "");
+let n=myrand(0,99);
+let num = prompt("請輸入0~99數字:","");
 
 if (num == null || num == n)  //剛開始將直接猜對或是未輸入者做判斷處理
- if(num==null) {
+  if(num==null) {
 alert(`你沒有輸入，答案是${n}`);
 } else {
 alert(`答對了${n}`);
 }
-for (var i=1; i<=num; i++)  {  //計算次數，並迴圈執行判斷
+
+
+for (var i=1; i<=100; i++)  {  
 if(num>n) {
-num = prompt("你輸入"+ num +"太高了，請在輸入:0~00之間","");
+num = prompt("你輸入"+ num +"太高了，請輸入0~99之間","");
 continue;
 } else if (num<n) {
-num = prompt("你輸入"+ num +"太低了，請在輸入:0~99之間","");
+num = prompt("你輸入"+ num +"太低了，請輸入0~99之間","");
 continue;
 } else if (num == n) {
 alert(`答對了${n}`);
@@ -64,7 +65,7 @@ break;
   
   }
 }
-alert(`共猜${i}次`); //跳出迴圈並執行計算次數的工作     
+alert(`共猜${i}次`);    
 
   </script>
 </body>
