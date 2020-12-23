@@ -24,13 +24,14 @@ shape.style.backgroundColor="rgb("+R+","+G+","+B+")";
 // shape.addEventListener("click",fn1);
 function fn1(){
 let n=prompt("請輸入0~255",R);
+
 if(n>255 || n<0){
-  n=prompt("數值不正確，請輸入0~255")
+  n=prompt("數值不正確，請輸入0~255",R)
   shape.style.backgroundColor="rgb("+n+","+G+","+B+")";
-}else{
+}
   shape.style.backgroundColor="rgb("+n+","+G+","+B+")";
   R=n
-}
+
 
 
 }
