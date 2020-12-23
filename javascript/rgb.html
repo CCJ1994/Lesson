@@ -23,32 +23,42 @@ let shape=document.getElementById("demo");
 shape.style.backgroundColor="rgb("+R+","+G+","+B+")";
 // shape.addEventListener("click",fn1);
 function fn1(){
-let n=prompt("請輸入0~255",R);
-
-if(n>255 || n<0){
-  n=prompt("數值不正確，請輸入0~255",R)
-  shape.style.backgroundColor="rgb("+n+","+G+","+B+")";
+  do{
+  n=prompt("請輸入0~255",R);
+}while(!(0<=n && n<=255));
+shape.style.backgroundColor="rgb("+n+","+G+","+B+")";
+if(n==null){
+  n=R;
+}else{
+  R=n;
 }
-  shape.style.backgroundColor="rgb("+n+","+G+","+B+")";
-  R=n
-
-
-
 }
+
 function fn2(){
-let n=prompt("請輸入0~255",G);
-if(n>255 || n<0){
-  n=prompt("數值不正確，請輸入0~255",G)
-}
+  do{
+  n=prompt("請輸入0~255",G);
+}while(!(0<=n && n<=255));
 shape.style.backgroundColor="rgb("+R+","+n+","+B+")";
+if(n==null){
+  n=G;
+}else{
+  G=n;
 }
+}
+
 function fn3(){
-let n=prompt("請輸入0~255",B);
-if(n>255 || n<0){
-  n=prompt("數值不正確，請輸入0~255",B)
-}
+
+do{
+  n=prompt("請輸入0~255",B);
+}while(!(0<=n && n<=255));
 shape.style.backgroundColor="rgb("+R+","+G+","+n+")";
+if(n==null){
+  n=B;
+}else{
+  B=n;
 }
+}
+
 
   </script>
 </body>
