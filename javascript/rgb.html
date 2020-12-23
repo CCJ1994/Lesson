@@ -26,22 +26,21 @@ function fn1(){
 let n=prompt("請輸入0~255",R);
 if(n>255 || n<0){
   n=prompt("數值不正確，請輸入0~255",R)
-555}
-  
   shape.style.backgroundColor="rgb("+n+","+G+","+B+")";
-
+}
+  shape.style.backgroundColor="rgb("+newval+","+G+","+B+")";
 }
 function fn2(){
 let n=prompt("請輸入0~255",G);
 if(n>255 || n<0){
-  prompt("數值不正確，請輸入0~255",G)
+  n=prompt("數值不正確，請輸入0~255",G)
 }
 shape.style.backgroundColor="rgb("+R+","+n+","+B+")";
 }
 function fn3(){
 let n=prompt("請輸入0~255",B);
 if(n>255 || n<0){
-  prompt("數值不正確，請輸入0~255",B)
+  n=prompt("數值不正確，請輸入0~255",B)
 }
 shape.style.backgroundColor="rgb("+R+","+G+","+n+")";
 }
