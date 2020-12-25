@@ -30,42 +30,49 @@ let shape=document.getElementById("demo");
 shape.style="width:0;height:0;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:100px solid "+color+";";
 }
 function fn4(change){
-  shape.style.backgroundColor=change;
+
+  if(shape.style.backgroundColor==""){
+    shape.style.borderBottomColor=change;
+  }else{
+    shape.style.bordergroundColor=change;
+  }
   color=change;
 }
 
 
-function myrand(min,max){
-  return Math.floor(Math.random()*(max-min+1))+min; //min~max
-}
-let n=myrand(0,99);
-let num = prompt("請輸入0~99數字:","");
-
-if (num == null || num == n)  //剛開始將直接猜對或是未輸入者做判斷處理
-  if(num==null) {
-alert(`你沒有輸入，答案是${n}`);
-} else {
-alert(`答對了${n}`);
-}
 
 
-for (var i=1; i<=100; i++)  {  
-if(num>n) {
-num = prompt("你輸入"+ num +"太高了，請輸入0~99之間","");
-continue;
-} else if (num<n) {
-num = prompt("你輸入"+ num +"太低了，請輸入0~99之間","");
-continue;
-} else if (num == n) {
-alert(`答對了${n}`);
-break;
-} else {
-  alert(`你放棄了，答案是${n}`);
-  break;
+// function myrand(min,max){
+//   return Math.floor(Math.random()*(max-min+1))+min; //min~max
+// }
+// let n=myrand(0,99);
+// let num = prompt("請輸入0~99數字:","");
+
+// if (num == null || num == n)  //剛開始將直接猜對或是未輸入者做判斷處理
+//   if(num==null) {
+// alert(`你沒有輸入，答案是${n}`);
+// } else {
+// alert(`答對了${n}`);
+// }
+
+
+// for (var i=1; i<=100; i++)  {  
+// if(num>n) {
+// num = prompt("你輸入"+ num +"太高了，請輸入0~99之間","");
+// continue;
+// } else if (num<n) {
+// num = prompt("你輸入"+ num +"太低了，請輸入0~99之間","");
+// continue;
+// } else if (num == n) {
+// alert(`答對了${n}`);
+// break;
+// } else {
+//   alert(`你放棄了，答案是${n}`);
+//   break;
   
-  }
-}
-alert(`共猜${i}次`);    
+//   }
+// }
+// alert(`共猜${i}次`);    
 
   </script>
 </body>

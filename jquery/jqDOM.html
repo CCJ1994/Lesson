@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <style>
+    li:not(.hot){
+      color: aqua;
+    }
+    .big{
+      font-size: larger;
+    }
+    .hot{
+      color: rebeccapurple;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // onload=function(){
+    //   console.log($("#head"));
+    // }
+    $(document).ready(function(){//Dom生成完畢後
+      console.log($("#head"));
+    })
+    
+    
+  </script> 
+  <div class="container">
+    <h1 id="head" title="mytitle">my jquery Demo list</h1>
+    <div id="page">
+      <h1>我的<span>清單</span></h1>
+      <ul>
+        <li id="one" class="hot">吃<b>飯飯</b></li>
+        <li id="two" class="hot">練程式</li>
+        <li id="three" class="hot">打遊戲</li>
+        <li id="four">睡覺</li>
+      </ul>
+      <div>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+      </div>
+    
+    </div>
+    <div title="mydiv">
+      <h2>Lorem ipsum dolor sit amet.</h2>
+    </div>
+    <h2>Lorem ipsum dolor sit amet.</h2>
+  </div>
+  <hr>
+  <input type="text" name="text" value="TXT">
+  <input type="button" value="BTN">
+  <input type="radio" name="gender" id="boy">boy
+  <input type="radio" name="gender" id="girl">girl
+  <textarea name="g" id="" cols="30" rows="10"></textarea>
+
+  <button>click</button>
+  <button>click</button>
+  <script>
+    document.getElementsByTagName("button")[0].onclick=function(){
+      console.log("JS");
+    };
+    $("button").eq(1).on("click",function(){
+      console.log("JQ");
+    });
+    $("button").on("click",function(){
+      console.log("JQAll");
+    });
+    $("button").click(function(){ //同上
+      console.log("JQ quick click");
+    });
+    $("button").eq(1).on("mouseover",function(){
+      console.log("JQ hover");
+    });
+    $("button").eq(1).hover(function(){//同上mouseover
+      console.log("JQ quick hover");
+    });
+
+  </script>
+</body>
+</html>
