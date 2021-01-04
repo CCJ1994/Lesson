@@ -6,11 +6,21 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="demo" style="width: 300px;height: 200px;"></div>
-  <button onclick="fn1()">R</button>
-  <button onclick="fn2()">G</button>
-  <button onclick="fn3()">B</button>
-
+  <div id="demo" style="width: 300px;height: 200px; text-align: center;line-height: 200px;"></div>
+  <div>
+    <input type="button" value="R" onclick="fn1()">
+    <input id= "rSlider" type="range" min="0" max="255" step="1" oninput="rtoSlider()">
+  </div>
+  <div>
+    <input type="button" value="G" onclick="fn2()">
+    <input id= "gSlider" type="range" min="0" max="255" step="1" oninput="gtoSlider()">
+  </div>
+  <div>
+    <input type="button" value="B" onclick="fn3()">
+    <input id= "bSlider" type="range" min="0" max="255" step="1" oninput="btoSlider()">
+  </div>
+  <input type="button" value="+" onclick="plus()">
+  <input type="button" value="-" onclick="minus()">
   <script>
 
 function myrand(min,max){
@@ -19,46 +29,109 @@ function myrand(min,max){
     let R=myrand(0,255);
     let G=myrand(0,255);
     let B=myrand(0,255);
+    
 let shape=document.getElementById("demo");
 shape.style.backgroundColor="rgb("+R+","+G+","+B+")";
-// shape.addEventListener("click",fn1);
+shape.innerHTML="#"+Number(R).toString(16).padStart(2,'0')+Number(G).toString(16).padStart(2,'0')+Number(B).toString(16).padStart(2,'0');
+let rSlider=document.getElementById('rSlider');
+let gSlider=document.getElementById('gSlider');
+let bSlider=document.getElementById('bSlider');
+rSlider.value=R;
+gSlider.value=G;
+bSlider.value=B;
 function fn1(){
   do{
   n=prompt("請輸入0~255",R);
 }while(!(0<=n && n<=255));
-shape.style.backgroundColor="rgb("+n+","+G+","+B+")";
 if(n==null){
   n=R;
 }else{
   R=n;
 }
+rSlider.value=n;
+shape.style.backgroundColor="rgb("+n+","+G+","+B+")";
+shape.innerHTML="#"+Number(n).toString(16).padStart(2,'0')+Number(G).toString(16)+Number(B).toString(16);
 }
-
 function fn2(){
   do{
   n=prompt("請輸入0~255",G);
 }while(!(0<=n && n<=255));
-shape.style.backgroundColor="rgb("+R+","+n+","+B+")";
 if(n==null){
   n=G;
 }else{
   G=n;
 }
+gSlider.value=n;
+shape.style.backgroundColor="rgb("+R+","+n+","+B+")";
+shape.innerHTML="#"+Number(R).toString(16)+Number(n).toString(16).padStart(2,'0')+Number(B).toString(16);
 }
-
 function fn3(){
-
 do{
   n=prompt("請輸入0~255",B);
 }while(!(0<=n && n<=255));
-shape.style.backgroundColor="rgb("+R+","+G+","+n+")";
 if(n==null){
   n=B;
 }else{
   B=n;
 }
+bSlider.value=n;
+shape.innerHTML="#"+Number(R).toString(16)+Number(G).toString(16)+Number(n).toString(16).padStart(2,'0');
+shape.style.backgroundColor="rgb("+R+","+G+","+n+")";
 }
+function plus(){
+    R++;
+    G++;
+    B++;
+  if(R>255){
+    R=255;
+  }
+  if(G>255){
+    G=255;
+  }
+  if(B>255){
+    B=255;
+  }
+  rSlider.value=R;
+  gSlider.value=G;
+  bSlider.value=B;
+      shape.style.backgroundColor="rgb("+R+","+G+","+B+")";
+      shape.innerHTML="#"+Number(R).toString(16).padStart(2,'0')+Number(G).toString(16).padStart(2,'0')+Number(B).toString(16).padStart(2,'0');
 
+}
+function minus(){
+    R--;
+    G--;
+    B--;
+    
+  if(R<0){
+    R=0;
+  }
+  if(G<0){
+    G=0;
+  }
+  if(B<0){
+    B=0;
+  }
+  rSlider.value=R;
+gSlider.value=G;
+bSlider.value=B;
+  shape.innerHTML="#"+Number(R).toString(16).padStart(2,'0')+Number(G).toString(16).padStart(2,'0')+Number(B).toString(16).padStart(2,'0');
+}
+function rtoSlider(){
+  R=rSlider.value;
+  shape.style.backgroundColor="rgb("+R+","+G+","+B+")";
+  shape.innerHTML="#"+Number(R).toString(16).padStart(2,'0')+Number(G).toString(16).padStart(2,'0')+Number(B).toString(16).padStart(2,'0');
+}
+function gtoSlider(){
+  G=gSlider.value;
+  shape.style.backgroundColor="rgb("+R+","+G+","+B+")";
+  shape.innerHTML="#"+Number(R).toString(16).padStart(2,'0')+Number(G).toString(16).padStart(2,'0')+Number(B).toString(16).padStart(2,'0');
+}
+function btoSlider(){
+  B=bSlider.value;
+  shape.style.backgroundColor="rgb("+R+","+G+","+B+")";
+  shape.innerHTML="#"+Number(R).toString(16).padStart(2,'0')+Number(G).toString(16).padStart(2,'0')+Number(B).toString(16).padStart(2,'0');
+}
 
   </script>
 </body>
