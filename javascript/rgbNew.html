@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RGB generator</title>
+  <style>
+    #demo {
+      width: 300px;
+      height: 200px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .container{
+      width: 50%;
+      margin:100px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container div{
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="demo"></div>
+    <div>
+      <input type="button" value="R" onclick="enterR()">
+      <input id="rBar" type="range" min="0" max="255" step="1" oninput="rSlider()">
+    </div>
+    <div>
+      <input type="button" value="G" onclick="enterG()">
+      <input id="gBar" type="range" min="0" max="255" step="1" oninput="gSlider()">
+    </div>
+    <div>
+      <input type="button" value="B" onclick="enterB()">
+      <input id="bBar" type="range" min="0" max="255" step="1" oninput="bSlider()">
+    </div>
+    <div>
+      <input type="button" value="+" onclick="plus()">
+      <input type="button" value="-" onclick="minus()">
+      <input type="button" value="?" onclick="rgbRand()">
+    </div>
+  </div>
+  <script>
+
+    function myrand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min; //min~max
+    };
+    let R = myrand(0, 255);
+    let G = myrand(0, 255);
+    let B = myrand(0, 255);
+    color();
+
+    function color() {
+      document.getElementById("demo").style.backgroundColor = "rgb(" + R + "," + G + "," + B + ")";
+      document.getElementById("demo").style.color = "rgb(" + (255 - R) + "," + (255 - G) + "," + (255 - B) + ")";
+      document.getElementById("demo").innerHTML = "<div>#" + Number(R).toString(16).padStart(2, '0') + Number(G).toString(16).padStart(2, '0') + Number(B).toString(16).padStart(2, '0')+"</div><div>rgb(" + R + "," + G + "," + B + ")</div>";
+      document.getElementById("rBar").value = R;
+      document.getElementById("gBar").value = G;
+      document.getElementById("bBar").value = B;
+    }
+
+    function enterR() {
+      do {
+        n = prompt("請輸入0~255", R);
+      } while (!(0 <= n && n <= 255));
+      if (n == null) {
+        n = R;
+      } else {
+        R = n;
+      }
+      color();
+    }
+    function enterG() {
+      do {
+        n = prompt("請輸入0~255", G);
+      } while (!(0 <= n && n <= 255));
+      if (n == null) {
+        n = G;
+      } else {
+        G = n;
+      }
+      color()
+    }
+    function enterB() {
+      do {
+        n = prompt("請輸入0~255", B);
+      } while (!(0 <= n && n <= 255));
+      if (n == null) {
+        n = B;
+      } else {
+        B = n;
+      }
+      color();
+    }
+    function plus() {
+      R++;
+      G++;
+      B++;
+      if (R > 255) {
+        R = 255;
+      }
+      if (G > 255) {
+        G = 255;
+      }
+      if (B > 255) {
+        B = 255;
+      }
+      color();
+
+    }
+    function minus() {
+      R--;
+      G--;
+      B--;
+      if (R < 0) {
+        R = 0;
+      }
+      if (G < 0) {
+        G = 0;
+      }
+      if (B < 0) {
+        B = 0;
+      }
+      color();
+      console.log(document.getElementById("rBar").value)
+    }
+    function rSlider() {
+      R = document.getElementById("rBar").value;
+      color()
+    }
+    function gSlider() {
+      G = document.getElementById("gBar").value;
+      color();
+    }
+    function bSlider() {
+      B = document.getElementById("bBar").value;
+      color();
+    }
+    function rgbRand() {
+      R = myrand(0, 255);
+      G = myrand(0, 255);
+      B = myrand(0, 255);
+      color();
+    }
+  </script>
+</body>
+
+</html>
