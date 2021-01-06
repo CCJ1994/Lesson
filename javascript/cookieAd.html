@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/7e94f0c211.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    #myFull {
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(30, 30, 30, 0.5);
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    #myAd {
+      position: relative;
+      cursor: pointer;
+    }
+
+    #adclose {
+      position: absolute;
+      right: -3rem;
+      top: -3rem;
+    }
+    #adclose:hover{
+      color: #fff;
+      
+      }
+
+  </style>
+</head>
+
+<body>
+  <div id="myFull">
+    <div id="myAd">
+      <img src="https://picsum.photos/350/450/?random=1" onclick="gotoAd()">
+      <div id="adclose"><i class="far fa-window-close fa-2x"></i></div>
+    </div>
+  </div>
+  <div class="container">
+    <h1>hello world!</h1>
+    <h1>hello world!</h1>
+    <h1>hello world!</h1>
+    <h1>hello world!</h1>
+    <h1>hello world!</h1>
+    <h1>hello world!</h1>
+    <h1>hello world!</h1>
+    <h1>hello world!</h1>
+  </div>
+  <script>
+    // function gotoAd(){
+    //   open("https://www.google.com","_blank");
+    // }
+    // const gotoAd=()=>{
+    //   open("https://www.google.com","_blank");
+    // }
+    const gotoAd=()=>open("https://www.google.com","_blank");
+    const closetoAd=()=>document.getElementById("myFull").style.display="none";
+      document.getElementById("adclose").onclick=closetoAd;
+    // document.getElementById("myFull").onclick=closetoAd;
+    document.getElementById("myFull").addEventListener("click",closetoAd);
+
+
+
+/* set dealine time
+    const endTime=new Date();
+    // console.log(endTime);
+    // endTime.setTime(endTime.getTime()+10000);
+    endTime.setSeconds(endTime.getSeconds()+10);
+    // console.log(endTime);
+      document.cookie="me=goal;expires="+endTime.toUTCString();
+    */
+    function findCookie(name){
+      const ckary=document.cookie.split("; ");
+      // console.log(ckary);
+      const getchk=ckary.find(function(e){
+        return (name+"="==e.substr(0,name.length+1));
+
+        //boolean true will getck=0;
+        //boolean false do each next;
+      })
+      // console.log(getchk);
+      if(getchk!=undefined) return getchk.split("=")[1];
+      else return false;
+    }
+    
+    const findCookie2=(name)=>{
+      const chkary=document.cookie.split("; ");
+      let objck=new Object();
+      chkary.forEach(e => objck[e.split("=")[0]]=e.split("=")[1]);
+      // console.log(objck);
+      if(name in objck) return objck[name];
+      else return false;
+    };
+
+    const checkCook=findCookie2("watchAD");
+    if(!checkCook){//代表還沒被指定cookie等於新訪客=>塞cookie且期限為今晚午夜
+      const endTime=new Date();
+      endTime.setHours(23),endTime.setMinutes(59),endTime.setSeconds(59);
+      // console.log(endTime);
+      document.cookie="watchAD=yes;expires="+endTime.toUTCString();
+
+    }
+    else{//有找到cookie代表已訪過=>拿掉廣告
+      // closetoAd(); //display:none;
+      document.getElementById('myFull').remove();//移除DOM
+    }
+  </script>
+</body>
+
+</html>

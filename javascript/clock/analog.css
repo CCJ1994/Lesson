@@ -1,0 +1,171 @@
+body{
+  margin: 0;
+  background: #ccc;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100vh;
+
+}
+.circle{
+  width: 300px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 30px;
+  padding: 30px;
+  box-shadow: 1px 1px 20px 1px black;
+  flex:0 0 300px;
+  position: relative;
+}
+h3{
+  text-align: center;
+}
+.jmin1{
+  width: 10px;
+  height: 40%;
+  background-color: rgb(0, 255, 13);
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  margin-left:-5px ;
+}
+.jhour1{
+  width: 10px;
+  height: 30%;
+  background-color: #00f;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  margin-left:-5px ;
+}
+.jsec1{
+  width: 4px;
+  height: 50%;
+  background-color: #f00;
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  margin-left:-2px ;
+}
+.jsec1::after{
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 7.5%;
+  left: 50%;
+  margin-left: -5px;
+}
+.zsec1{
+  width: 300px;
+  height: 300px;
+  animation: js 60s linear infinite;
+  z-index: 10;
+  position: absolute;
+}
+.zhour1{
+  width: 300px;
+  height: 300px;
+  animation: jh 43200s linear infinite;
+  z-index: 10;
+  position: absolute;
+  z-index: 5;
+}
+.zmin1{
+  width: 300px;
+  height: 300px;
+  animation: jm 3600s linear infinite;
+  z-index: 10;
+  position: absolute;
+  z-index: 1;
+}
+
+/* 用js控制 
+@keyframes js{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+@keyframes jm{
+  from{
+    transform: rotate(280deg);
+  }
+  to{
+    transform: rotate(640deg);
+  }
+}
+@keyframes jh{
+  from{
+    transform: rotate(30deg);
+  }
+  to{
+    transform: rotate(390deg);
+  }
+}
+*/
+
+.jmin2{
+  width: 16px;
+  height: 300PX;
+  background: url(min.png);
+  position: absolute;
+  left: 50%;
+  margin-left:-8px ;
+  animation: jm 3600s linear infinite;
+
+}
+.jhour2{
+  width: 16px;
+  height: 300PX;
+  background: url(hour.png);
+  position: absolute;
+  left: 50%;
+  margin-left:-8px ;
+  animation: jh 43200s linear infinite;
+
+}
+.jsec2{
+  width: 16px;
+  height: 300PX;
+  background: url(sec.png);
+  position: absolute;
+  left: 50%;
+  margin-left:-8px ;
+  animation: js 60s linear infinite;
+}
+
+
+
+.orih{
+  position: absolute;
+  
+  transform-origin:50% 86%;
+  z-index: 2;
+}
+.orim{
+  position: absolute;
+  transform-origin:50% 90%;
+  z-index: 1;
+
+}
+.oris{
+  position: absolute;
+  transform-origin:50% 90%;
+  z-index: 3;
+}
+.anih{
+  animation: jh 43200s linear infinite;
+}
+.anim{
+  animation: jm 3600s linear infinite;
+}
+.anis{
+  animation: js 60s linear infinite;
+
+}
