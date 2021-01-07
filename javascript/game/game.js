@@ -1,10 +1,8 @@
 //DOM 節點
-let time=document.getElementById("time"); //dom time
-let combo=document.getElementById("combo"); //dom combo
-
 let animal=document.getElementsByTagName("img");
 // console.log(animal);
-
+let time=document.getElementById("time"); //dom time
+let combo=document.getElementById("combo"); //dom combo
 let sec=0,count=0;
 const btn=document.getElementsByTagName("button")[0]; //button
 btn.addEventListener("click",gamestart);
@@ -39,7 +37,6 @@ function gamestart(){
   }
 
 }
-
 function showIt(where,delay,item){ //觸發紅色狀態處理
   // console.log(where,delay,item);
   if(animal[where].style.backgroundColor != ""){ //是紅或綠，改地方釋放
@@ -59,7 +56,7 @@ function showIt(where,delay,item){ //觸發紅色狀態處理
       animal[where].src="y.png";
       animal[where].style.backgroundColor=null;
       animal[where].alt=null;
-    },delay*1000);
+    }, delay*1000);
   }
 
 
@@ -69,31 +66,31 @@ function keyboard(){
   // console.log(event.keyCode);
   switch(event.keyCode){
     case 103:
-      getCombo(0)
+      getCombo(0);
       break;
     case 104:
-      getCombo(1)
+      getCombo(1);
       break;
     case 105:
-      getCombo(2)
+      getCombo(2);
       break;
     case 100:
-      getCombo(3)
+      getCombo(3);
       break;
     case 101:
-      getCombo(4)
+      getCombo(4);
       break;
     case 102:
-      getCombo(5)
+      getCombo(5);
       break;
     case 97:
-      getCombo(6)   
+      getCombo(6);
     break;
     case 98:
-      getCombo(7)   
+      getCombo(7);
     break;
     case 99:
-      getCombo(8)    
+      getCombo(8);
     break;
     
   }
@@ -101,12 +98,12 @@ function keyboard(){
 }
 function getCombo(item){ //得分，只有在紅色狀態時給分
   // console.log(item);
-  if(animal[item].style.backgroundColor=="red"){
-    animal[where].src="g.png";
-    animal[where].style.backgroundColor="green";
+  if(animal[item].style.backgroundColor == "red"){
+    animal[item].src="g.png";
+    animal[item].style.backgroundColor = "green";
 
     count++;
-    combo.textContent=count;
+    combo.textContent = count;
 
     // setTimeout(() => { //綠色會1秒後自動回歸黃色
     //   animal[where].src="y.png";
