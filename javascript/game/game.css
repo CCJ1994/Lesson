@@ -1,0 +1,30 @@
+body{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+.container{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 500px;
+}
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-between;
+  width: 320px;
+  height: 320px;
+  padding: 10px;
+  background-color: lightslategrey;
+}
+.content > img{
+  flex:0 0 100px;
+  background-color: yellow;
+  cursor: pointer;
+}
