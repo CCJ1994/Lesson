@@ -7,7 +7,8 @@ let sec=0,count=0;
 const btn=document.getElementsByTagName("button")[0]; //button
 btn.addEventListener("click",gamestart);
 
-document.onkeydown=keyboard;
+
+let redBeYellow=new Array();
 
 function gamestart(){
   sec=60;
@@ -15,6 +16,7 @@ function gamestart(){
   time.textContent=sec;
   combo.textContent=count;
   btn.removeEventListener("click",gamestart);
+
   const start=setInterval(()=>{
     if(sec==0){
       clearInterval(start); //倒數至0
@@ -52,7 +54,7 @@ function showIt(where,delay,item){ //觸發紅色狀態處理
     animal[where].alt=item;
 
 
-    setTimeout(()=>{
+    redBeYellow[item]=setTimeout(()=>{  //紅色會自動於n秒轉黃色，要記住這一百個定時炸彈的編號
       animal[where].src="y.png";
       animal[where].style.backgroundColor=null;
       animal[where].alt=null;
@@ -62,6 +64,17 @@ function showIt(where,delay,item){ //觸發紅色狀態處理
 
 }
 
+//滑鼠事件
+for(let i=0;i<animal.length;i++){
+  // console.log(i,animal[i]);
+  //不能這樣寫 animal[i].addEventListener('click',getCombo(i)); 只能放函式名稱
+  animal[i].addEventListener("click",()=>{
+    getCombo(i);//這是指令，不是函式名稱
+  });
+}
+
+//鍵盤事件
+document.onkeydown=keyboard;
 function keyboard(){
   // console.log(event.keyCode);
   switch(event.keyCode){
@@ -98,17 +111,23 @@ function keyboard(){
 }
 function getCombo(item){ //得分，只有在紅色狀態時給分
   // console.log(item);
-  if(animal[item].style.backgroundColor == "red"){
+  if(animal[item].style.backgroundColor == "red"){ 
     animal[item].src="g.png";
     animal[item].style.backgroundColor = "green";
-
+    //計分
     count++;
     combo.textContent = count;
 
-    // setTimeout(() => { //綠色會1秒後自動回歸黃色
-    //   animal[where].src="y.png";
-    //   animal[where].backgroundColor=null;
-    //   animal[where].alt=null;
-    // }, 1000);
+    // 取消原本紅轉黃的預定規劃
+    const theID=animal[item].alt;
+    // console.log(theID);
+    clearTimeout(redBeYellow[theID]);
+
+    // 規劃綠轉黃的預定規劃
+    setTimeout(() => { //綠色會1秒後自動回歸黃色
+      animal[item].src="y.png";
+      animal[item].style.backgroundColor=null;
+      animal[item].alt=null;
+    }, 1000);
   }
 }

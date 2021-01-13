@@ -18,7 +18,7 @@ kf.innerHTML = `
 }
 @keyframes jm {
   from {transform: rotate(${degM}deg);}
-  to {transform: rotate(${degS + 360}deg);}
+  to {transform: rotate(${degM + 360}deg);}
 }
 @keyframes jh {
   from {transform: rotate(${degH}deg);}
