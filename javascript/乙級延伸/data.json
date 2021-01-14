@@ -39,5 +39,82 @@
       "03A08":"media/03A08.jpg",
       "03A09":"media/03A09.jpg"
     }
-  }
+  },
+  "q3t5":[
+    {"img": "media/03A01.jpg","text":"03A01","odr": 1},
+    {"img": "media/03A02.jpg","text":"03A02","odr": 2},
+    {"img": "media/03A03.jpg","text":"03A03","odr": 3},
+    {"img": "media/03A04.jpg","text":"03A04","odr": 4},
+    {"img": "media/03A05.jpg","text":"03A05","odr": 5},
+    {"img": "media/03A06.jpg","text":"03A06","odr": 6}
+  ],
+  "q3t8":{
+    "movie":{
+      "title": "魔物獵人",
+      "date": "2021-01-14",
+      "time": "12:00-14:00"
+    },
+    "sold":[1,2,3,6,10]
+  },
+  "q4t4": [
+    {
+      "title": "流行皮件",
+      "id": 1,
+      "sub": [
+        {
+          "title": "男用皮件",
+          "id": 5,
+          "count": 3
+        },
+        {
+          "title": "女用皮件",
+          "id": 6,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "title": "流行鞋區",
+      "id": 2,
+      "sub": [
+        {
+          "title": "少女鞋區",
+          "id": 7,
+          "count": 1
+        },
+        {
+          "title": "紳士流行鞋區",
+          "id": 8,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "title": "流行飾品",
+      "id": 3,
+      "sub": [
+        {
+          "title": "流行飾品",
+          "id": 9,
+          "count": 0
+        },
+        {
+          "title": "時尚珠寶",
+          "id": 10,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "title": "背包",
+      "id": 4,
+      "sub": [
+        {
+          "title": "背包",
+          "id": 11,
+          "count": 2
+        }
+      ]
+    }
+  ]
 }

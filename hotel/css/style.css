@@ -58,6 +58,16 @@ footer a.position-fixed{
   }
 }
 
+#meTop{
+  opacity: 0;
+  transition: 0.5s ease;
+}
+#meTop.showon{
+  opacity: 1;
+
+}
+
+
 /* room */
 #meRoom .nav-tabs .nav-link{
   flex:0 1 12%;
@@ -98,8 +108,20 @@ footer a.position-fixed{
 
 /* menu */
 
-header .navbar .nav-link{
+header .navbar .nav-link, header{
   transition: 0.5s ease;
+}
+header a::after{
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0%;
+  background-color: #fff;
+  margin: 5px 0;
+  transition: 0.5s ease;
+}
+header a.active::after{
+  width: 100%;
 }
 
 /* transport */

@@ -1,0 +1,23 @@
+.box{
+  background: url('media/03D04.png');
+  width: 540px;
+  height: 370px;
+  box-sizing: border-box;
+  padding: 19px 112px 11px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  margin: 0 auto;
+}
+.box>label{
+  flex: 0 0 20%;
+  height: 85px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+label>input[type="checkbox"]{
+  align-self: flex-end;
+}
