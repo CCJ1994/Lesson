@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RGB generator</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <style>
     #demo {
       width: 300px;
@@ -61,7 +62,7 @@
     function color() {
       document.getElementById("demo").style.backgroundColor = "rgb(" + R + "," + G + "," + B + ")";
       document.getElementById("demo").style.color = "rgb(" + (255 - R) + "," + (255 - G) + "," + (255 - B) + ")";
-      document.getElementById("demo").innerHTML = "<div>#" + Number(R).toString(16).padStart(2, '0') + Number(G).toString(16).padStart(2, '0') + Number(B).toString(16).padStart(2, '0')+"</div><div>rgb(" + R + "," + G + "," + B + ")</div>";
+      document.getElementById("demo").innerHTML = "<div>#" + Number(R).toString(16).padStart(2, '0') + Number(G).toString(16).padStart(2, '0') + Number(B).toString(16).padStart(2, '0')+"</div>";
       document.getElementById("rBar").value = R;
       document.getElementById("gBar").value = G;
       document.getElementById("bBar").value = B;
@@ -150,7 +151,7 @@
       B = myrand(0, 255);
       color();
     }
+    
   </script>
 </body>
-
 </html>
