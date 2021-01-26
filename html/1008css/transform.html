@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
+    }
+    .box{
+      width: 100px;
+      height: 100px;
+      color: seashell;
+      line-height: 100px;
+      text-align: center;
+      background: cornflowerblue;
+      position: relative;
+    }
+    .box::after{
+      content: "Transform";
+      background: seagreen;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 0;
+      left: 0;
+      opacity: 0.5;
+
+
+      /*要同時寫兩個以上變化必須函式寫一起
+      transform: translate(100%);平移
+      transform: scale(2); 縮放 負值為顛倒 
+      transform: rotate(45deg); 旋轉
+      transform: skew(10deg); 傾斜*/ 
+      /* transform: translate(100%,0) scale(1,-2); */
+      /* transform: translate(100%,0) scale(1,-2) rotate(45deg) skew(60deg, 60deg); */
+
+      transform: rotate(45deg);
+
+      /* 設旋轉定位點，預設為50% 50% */
+      transform-origin: 100% 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">BEFORE</div>
+
+</body>
+</html>

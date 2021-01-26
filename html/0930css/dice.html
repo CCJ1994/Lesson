@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .dice{
+      background:linear-gradient(45deg,#fff,#ccc);
+      border: 2px solid;
+      height: 200px;
+      width: 200px;
+      display: inline-block;
+      box-shadow: 7px 2px 20px 0 black;
+      border-radius: 20px;
+      position: relative;
+    }
+    .a1{
+      height: 20%;
+      width: 20%;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      /* 
+      left:50%;
+      top:50%;
+      transform:translate(-50% -50%);
+      */
+    }
+    .b1{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    }
+    .b2{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+    }
+    .c1{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    }
+    .c2{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+    .c3{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+    }
+    .d1{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    }
+    .d2{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      right:10%;
+    }
+    .d3{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+    }
+    .d4{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 10%;
+      left:10%;
+    }
+    .e1{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    }
+    .e2{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      right:10%;
+    }
+    .e3{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+    }
+    .e4{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 10%;
+      left:10%;
+    }
+    .e5{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+    .f1{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    }
+    .f2{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      right:10%;
+    }
+    .f3{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+    }
+    .f4{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 10%;
+      left:10%;
+    }
+    .f5{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 40%;
+      right:10%;
+    }
+    .f6{
+      height: 20%;
+      width: 20%;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 40%;
+      left:10%;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="dice">
+    <div class="a1"></div>
+  </div>
+  <div class="dice">
+    <div class="b1"></div>
+    <div class="b2"></div>
+  </div>
+  <div class="dice">
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+  </div>
+  <div class="dice">
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+  </div>
+  <div class="dice">
+    <div class="e1"></div>
+    <div class="e2"></div>
+    <div class="e3"></div>
+    <div class="e4"></div>
+    <div class="e5"></div>
+  </div>
+  <div class="dice">
+    <div class="f1"></div>
+    <div class="f2"></div>
+    <div class="f3"></div>
+    <div class="f4"></div>
+    <div class="f5"></div>
+    <div class="f6"></div>
+    <div class="f7"></div>
+  </div>
+</body>
+</html>

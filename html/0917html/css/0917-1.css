@@ -1,0 +1,10 @@
+h1,
+p {
+  /* color: red; */
+  color: rgb(23, 208, 236);
+  background-color:rgba(219, 241, 100, 0.5);
+  /* background-color: #00000077; 
+    background-color:#0007;*/
+
+  font-size: 50px;
+  }

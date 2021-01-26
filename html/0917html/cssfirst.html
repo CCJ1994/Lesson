@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Selector</title>
+  <!-- CSS頁首宣告-->
+  <style>
+     /*匯入功能屬於CSS語法，必須要放在初始行數*/ 
+    @import url(./css/0917style.css);
+     h1,
+    p {
+      color: red;
+      background-color: black;
+      font-size: 50px;
+    }
+  </style>
+  <!-- CSS外部連結 優先權與頁首一樣 越後面出現越高-->
+  <link rel="stylesheet" href="./css/0917-1.css">
+</head>
+<body>
+  <!-- CSS行內樣式 優先權最高-->
+  <!-- <h1 style="color: lightblue;">Lorem ipsum dolor sit amet.</h1> -->
+  <h1>Lorem ipsum dolor sit amet.</h1>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat voluptatum autem veniam. Quo, amet. Enim, quisquam. Architecto, cumque cum id illum aspernatur consectetur aperiam, ipsam dolores repellat laborum nobis error!</p>
+</body>
+</html>

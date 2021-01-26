@@ -1,0 +1,42 @@
+/* @media screen{
+  body{
+    background: rosybrown;
+  }
+  
+  h1{
+        color: cornflowerblue;
+  }
+}
+
+@media print{
+  body{
+    background: rgb(47, 187, 140);
+  }
+  
+  h1{
+        color: cornflowerblue;
+  }
+} */
+
+@media (min-width:320px) and (max-width:549px){
+  body{
+    background: royalblue;
+  }
+}
+
+@media (min-width:550px) and (max-width:767px){
+  body{
+    background: rgb(156, 225, 65);
+  }
+}
+
+@media (min-width:768px) and (max-width:959px){
+  body{
+    background: rgb(225, 97, 65);
+  }
+}
+@media print,(min-width:960px){
+  body{
+    background: rgb(65, 225, 177);
+  }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 在flex裡span可以定義大小 */
+    .flex{
+      display: flex;
+      height: 600px;
+
+      background-color: honeydew;
+      border: 1px solid;
+      /*
+      flex-direction: row; row橫,column縱 reverse相反
+      flex-wrap: wrap; 當item總量超出flex時是否要換行，預設是nowrap,wrap,wrap-reverse 
+      */
+      flex-flow:row nowrap;
+      /* justify-content: space-evenly; 主軸的對齊方式:flex-start,flex-end,center,space-between,space-around,space-evenly */
+      
+      /* 交軸的對齊方式:flex-start,flex-end,center,stretch(預設) */
+      /* align-items: center; */
+
+      /* 針對多行的對齊方式，只有當你設定wrap才有用，參數同主軸對齊的方式 */
+      align-content: stretch;
+    }
+    /* 
+    flex:
+    flex-grow膨脹係數 ，預設值為1
+    flex-shrink收縮係數，預設值為1
+    flex-basis 
+    */
+
+    .item {
+      width: 150px;
+      height: 150px;
+      background: hotpink;
+      margin: 0;
+      /*
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: 33.3%;*/
+      flex: 0 1 33.3%;
+
+    }
+    
+    .r{
+      background: red;
+      max-height: 500px;
+      min-height: 50px;
+      /* align-self:flex-start; 單一要求，寫在指定的flex子項目 */
+      
+      /* 顯示順序 */
+      order: 3;
+
+
+
+    }
+    .g{
+      background: green;
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: 33.3%;
+      order: 0;
+    }
+    .b{
+      background: blue;
+      /* align-self:flex-end; 單一要求，寫在指定的flex子項目 */
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: 33.3%;
+      order: -3;
+    }
+
+    
+
+  </style>
+</head>
+<body>
+  <div class="flex">
+    <p class="item r">aaaaaaaaaaaaaaa</p>
+    <span class="item g">bbbbbbbbbbbbbbbbb</span>
+    <p class="item b">ccccccccccccccccc</p>
+    <!-- <p class="item r">aaa</p>
+    <span class="item g">bbb</span>
+    <p class="item b">ccc</p>
+    <p class="item r">aaa</p>
+    <span class="item g">bbb</span>
+    <p class="item b">ccc</p>
+    -->
+    
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div.demo1{
+      /* 強制切斷 */
+      word-break: break-all;
+
+      /* 設定行高 */
+      line-height: 2rem;
+      color: brown;
+    }
+    div:not(.demo1) {
+      color:green;
+    }
+    a {
+      background: hotpink;
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+      line-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo1" style="width: 200px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum eos incidunt, aliquam voluptas inventore unde nulla numquam repellat, perspiciatis atque magni libero reiciendis rerum possimus ea sed, qui facilis dolor?</div>
+  <p>lorem</p>
+  <hr>
+  <div>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">面積看來會有，經驗。</a>
+  </div>
+  <hr>
+  <div>
+    <!-- inline內的床職對齊 -->
+    <span style="vertical-align: top;">lorem</span>
+    <img style="vertical-align: bottom;" src="https://fakeimg.pl/150x150">
+    <span>lorem</span>
+  </div>
+</body>
+</html>

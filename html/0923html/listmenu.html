@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+    }
+    ul{
+      margin: 0;
+      padding: 0;
+      background: darkcyan;
+      text-align: center;
+      /* font-size: 0; */
+      display: flex;
+      justify-content: center;
+    }
+    li{
+      background: tomato;
+      display: inline-block;
+      /*margin-right: -4px; 消除inline-block原來就有的4px
+      font-size: 1rem; */
+    }
+    
+    a{
+      padding: 20px;
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+
+
+  </style>
+</head>
+<body>
+  <!-- ul>(li>a)*4 -->
+  <ul>
+    <li><a href="#">關於我們</a></li>
+    <li><a href="#">產品介紹</a></li>
+    <li><a href="#">客戶案例</a></li>
+    <li><a href="#">售後服務</a></li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      /* border間距 */
+      border-spacing: 0px; 
+      
+      /* 表格置中 */
+      margin: 0 auto; 
+      
+      /* border合併 */
+      /* border-collapse: collapse; */
+      
+      /* 隱藏空欄位 
+      empty-cells: hide;*/
+      border: 1px solid black;
+      border-style: dotted;
+      text-align: center;
+      width: 50vw;
+      box-shadow:
+        inset 1px 2px 0 chartreuse,
+        1px 2px 0 coral;
+    }
+  
+    td{
+      border: 1px solid black;
+      padding: 20px;
+      
+    }  
+    td.w20{
+      width: 20%;
+    }
+    td.w50{
+      width: 50%;
+    }
+    td.w30{
+      width: 30%;
+    }
+    tr.odd{
+      background-color: chartreuse;
+    }
+    tr:nth-of-type(even){
+      background-color: darkkhaki;
+    }
+
+    tr:hover{
+      background-color: darkgray;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tbody>
+      <tr class="odd">
+        <td class="w20">iteam 1</td>
+        <td class="w50"></td>
+        <td class="w30"></td>
+      </tr>
+      <tr>
+        <td>iteam 4</td>
+        <td>iteam 5</td>
+        <td>iteam 6</td>
+      </tr>
+      <tr class="odd">
+        <td>iteam 7</td>
+        <td>iteam 8</td>
+        <td>iteam 9</td>
+      </tr>
+      <tr>
+        <td>iteam 10</td>
+        <td>iteam 11</td>
+        <td>iteam 12</td>
+      </tr>
+      <tr class="odd">
+        <td class="w20">iteam 1</td>
+        <td class="w50"></td>
+        <td class="w30"></td>
+      </tr>
+      <tr>
+        <td>iteam 4</td>
+        <td>iteam 5</td>
+        <td>iteam 6</td>
+      </tr>
+      <tr class="odd">
+        <td>iteam 7</td>
+        <td>iteam 8</td>
+        <td>iteam 9</td>
+      </tr>
+      <tr>
+        <td>iteam 10</td>
+        <td>iteam 11</td>
+        <td>iteam 12</td>
+    </tbody>
+  </table>
+</body>
+</html>
