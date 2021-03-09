@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+    <post v-for="post in posts" :title="post.title" :text="post.text"></post>
+    <comp1 @edit="handleEdit" :text="text"></comp1>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/x-template" id="template-counter">
+    <div>
+      <h1>計數器</h1>
+      <input type="button" :value="count" @click="count++">
+    </div>
+  </script>
+  <script type="text/x-template" id="template-post">
+    <div>
+      <h1>{{ title }}</h1>
+      <p>{{ text }}</p>
+    </div>
+  </script>
+  <script type="text/x-template" id="template-comp1">
+    <div>
+      <h1>{{ text }}</h1>
+      <input type="button" value="改" @click="changeText">
+    </div>
+  </script>
+  <script>
+    Vue.component('counter', {
+      // template: `<input type="button" :value="count" @click="count++">`,
+      template: '#template-counter',
+      data () {
+        return {
+          count: 0
+        }
+      }
+    })
+
+    Vue.component('post', {
+      template: '#template-post',
+      props: {
+        title: String,
+        text: String
+      }
+    })
+
+    Vue.component('comp1', {
+      template: '#template-comp1',
+      props: {
+        text: String
+      },
+      methods: {
+        changeText () {
+          this.$emit('edit', 'bbb')
+        }
+      },
+    })
+
+    new Vue({
+      el: '#app',
+      data () {
+        return {
+          posts: [
+            { title: '標題', text: '內文內文'}
+          ],
+          text: 'aaa'
+        }
+      },
+      methods: {
+        handleEdit (value) {
+          this.text = value
+        }
+      }
+    })
+  </script>
+</body>
+</html>

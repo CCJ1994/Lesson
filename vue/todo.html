@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="newitem" @keydown.enter="add" :style="{border: '10px solid ' + inputBorder}">
+    <input type="button" value="新增" @click="add">
+    <hr>
+    <input type="text" v-model="search">
+    <input type="radio" v-model="display" :value="-1">全部
+    <input type="radio" v-model="display" :value="0">未購買
+    <input type="radio" v-model="display" :value="1">已購買
+    <hr>
+    <ul>
+      <li v-for="(item, index) in filteredItem" :key="item.id">
+        <input type="checkbox" v-model="item.buy">
+        <del v-if="item.buy">{{ item.name }}</del>
+        <span v-else>{{ item.name }}</span>
+        <input type="button" value="x" @click="del(index)">
+      </li>
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          items: [],
+          newitem: '',
+          search: '',
+
+          //-1代表顯示全部
+          //0代表未購買
+          //1代表已購買
+          display: -1,
+          id: 1
+        }
+      },
+      methods: {
+        add() {
+          if (this.newitem.length >= 2) {
+            this.items.push({
+              id: this.id,
+              buy: false,
+              name: this.newitem
+            })
+            this.newitem = '',
+              this.id++
+          }
+        },
+        del(index) {
+          this.items.splice(index, 1)
+        }
+      },
+      computed: {
+        inputBorder() {
+          return this.newitem.length == 0 ? 'black' : this.newitem.length >= 2 ? 'blue' : 'red'
+        },
+        filteredItem() {
+          return this.items.filter(item => {
+            const textmatch = item.name.toUpperCase().includes(this.search.toUpperCase())
+            if (this.display == -1) return textmatch
+            else if (this.display == 0) return textmatch && item.buy == false
+            else if (this.display == 1) return textmatch && item.buy == true
+          })
+        }
+      },
+      watch: {
+        // items(newValue,oldValue){
+        //   localStorage.setItem('buylist',JSON.stringify(newValue))
+        // },
+        items: {
+          handler(newValue, oldValue) {
+            localStorage.setItem('buylist', JSON.stringify(newValue))
+          },
+          deep: true
+        }
+      },
+      mounted() {
+        const items = localStorage.getItem('buylist')
+        if (items) {
+          this.items = JSON.parse(items)
+          this.id = this.items[this.items.length - 1].id + 1
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

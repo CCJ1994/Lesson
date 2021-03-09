@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .card {
+      border: 10px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    按了 {{ goods }} 個讚
+    <card v-for="post in posts" :image="post.image" :text="post.description" @clickgood="handlegood"></card>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/x-template" id="template-card">
+    <div class="card">
+      <img :src="image">
+      <p>{{ text }}</p>
+      <input type="button" :value="good ? '收回讚' : '讚'" @click="clickgood">
+    </div>
+  </script>
+  <script>
+    Vue.component('card', {
+      template: '#template-card',
+      props: {
+        image: String,
+        text: String
+      },
+      data () {
+        return {
+          good: false
+        }
+      },
+      methods: {
+        clickgood () {
+          this.good = !this.good
+          this.$emit('clickgood', this.good)
+        }
+      }
+    })
+
+    new Vue({
+      el: '#app',
+      data () {
+        return {
+          posts: [],
+          goods: 0
+        }
+      },
+      methods: {
+        handlegood (value) {
+          if (value) this.goods++
+          else this.goods--
+        }
+      },
+      mounted() {
+        fetch('https://api.kento520.tw/zack/')
+          .then(response => response.json())
+          .then(json => {
+            this.posts = json
+          })
+      },
+    })
+  </script>
+</body>
+</html>

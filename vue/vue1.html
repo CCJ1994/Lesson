@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red{
+      color:red;
+    }
+    .big{
+      font-size:100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ text }} 124</h1>
+    <h1 v-text="text"></h1>
+    <!-- v-text 固定語法,標籤內不可以再放東西 -->
+    <h1>資料 text 有 {{ text.length }} 個字</h1>
+    <h1>{{ number + 10}}</h1>
+
+    <h1>{{ htmlstr }}</h1>
+    <span v-html="htmlstr"></span>
+    <!-- 模板語法出來的東西都會被當文字，所以要用這種方式輸出有html標籤的東西 -->
+    <p v-if="number == 10 ">數字是10</p>
+    <p v-else-if="number > 10">數字大於10</p>
+    <p v-else>數字小於 10</p>
+    <p v-show="number ==10 ">數字是10</p>
+    <ul>
+      <!-- foreach($fruits as $index =>$fruit) -->
+      <li v-for="(fruit,index) in fruits">
+        {{ index }}-{{ fruit }}
+      </li>
+    </ul>
+
+    <a v-bind:href="link">連結</a>
+    <a :href="link">連結</a><!-- 同上 -->
+    <img :src="img" width="100" alt="">
+    
+    <h1 :style="{color: textColor , backgroundColor: bgColor}">rgeerherh</h1>
+    <h1 :style="{color: 'red' , backgroundColor: bgColor}">rgeerherh</h1>
+    <h1 :style="h1style">rgeerherh</h1>
+
+    <h1 :class="{red: isred,big: isbig}">erhtrh</h1>
+    <h1 :class="{red: true,big: false}">erhtrh</h1>
+    {{ form.text }}
+    <input type="text" v-model="form.text">
+    <br>
+    
+    {{ form.checkbox }}
+    <input type="checkbox" v-model="form.checkbox" :value="1">
+    <input type="checkbox" v-model="form.checkbox" :value="2">
+    <input type="checkbox" v-model="form.checkbox" :value="3">
+    {{ form.fruits }}
+    <input type="checkbox" v-for="(fruit ,index) in fruits" v-model="form.fruits" :value="fruit">
+    <br>
+    {{ form.raido }}
+    <input type="radio" v-for="(fruit ,index) in fruits" v-model="form.radio" :value="fruit">
+    <br>
+    {{ form.select }}
+    <select v-model="form.select" id="">
+      <option v-for="(fruit ,index) in fruits" :value="fruit">{{ fruit }}</option>
+    </select>
+    <br>
+    <input type="button" value="點我" v-on:click="sayhi">
+    <input type="button" value="點我" @click="sayhi">
+    <br>                                                                  <!-- 加$帶入原生js事件 -->
+    <input type="button" v-for="(fruit ,index) in fruits" :value="fruit" @click="say(fruit, $event)">
+    <br>
+    打了{{ newfruitlength }}個字
+    <input type="text" v-model="newfruit" @keydown.enter="addFruit">
+    <br>
+    <a href="https://fb.com" @click.prevent="sayhi">不能進去的連結</a>
+    <br>
+    <input type="button" @click="geth1" value="geth1">
+    <input type="button" @click="geth1id" value="geth1id">
+    <h1 ref="myh1" id="myh1">myh1</h1>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el:'#app',
+      data() {
+        return {
+          text:'aaagreg',
+          number:10,
+          htmlstr:'<h1>abf</h1>',
+          fruits:['西瓜','香蕉','哈密瓜'],
+          link:'https://fb.com',
+          img:'https://miro.medium.com/max/676/1*XEgA1TTwXa5AvAdw40GFow.png',
+          textColor:'red',
+          bgColor:'black',
+          h1style:{
+            color:'blue',
+            backgroundColor:'green'
+          },
+          isred:true,
+          isbig:true,
+          form:{
+            text:'',
+            checkbox: [],
+            fruits: [],
+            raido: '西瓜',
+            select:''
+          },
+          newfruit:''
+        }
+      },
+      methods:{
+        sayhi(event) {
+          alert('hi');
+        },
+        say(fruit, event) {
+          alert(fruit);
+        },
+        addFruit (){
+          this.fruits.push(this.newfruit)
+          this.newfriut=''
+        },
+        geth1(){
+          console.log(this.$refs.myh1)
+          this.$refs.myh1.style.color='blue'
+        },
+        geth1id(){
+          const h1=this.$el.querySelector("#myh1")
+          h1.style.color='yellow'
+        }
+      },
+      computed: {
+        newfruitlength(){
+          return this.newfruit.length
+        }
+      },
+      watch:{
+        newfruit(){
+          console.log('東西變了')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
