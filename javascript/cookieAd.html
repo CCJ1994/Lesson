@@ -84,7 +84,7 @@
       document.cookie="me=goal;expires="+endTime.toUTCString();
     */
     function findCookie(name){
-      const ckary=document.cookie.split("; ");
+      const ckary=document.cookie.split(";");
       // console.log(ckary);
       const getchk=ckary.find(function(e){
         return (name+"="==e.substr(0,name.length+1));
@@ -98,13 +98,13 @@
     }
     
     const findCookie2=(name)=>{
-      const chkary=document.cookie.split("; ");
+      const chkary=document.cookie.split(";");
       let objck=new Object();
       chkary.forEach(e => objck[e.split("=")[0]]=e.split("=")[1]);
       // console.log(objck);
       if(name in objck) return objck[name];
       else return false;
-    };
+    }
 
     const checkCook=findCookie2("watchAD");
     if(!checkCook){//代表還沒被指定cookie等於新訪客=>塞cookie且期限為今晚午夜
@@ -112,7 +112,6 @@
       endTime.setHours(23),endTime.setMinutes(59),endTime.setSeconds(59);
       // console.log(endTime);
       document.cookie="watchAD=yes;expires="+endTime.toUTCString();
-
     }
     else{//有找到cookie代表已訪過=>拿掉廣告
       // closetoAd(); //display:none;

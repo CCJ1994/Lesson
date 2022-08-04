@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin:*');
-$db = new PDO("mysql:host=127.0.0.1;dbname=jq_sample;charset=utf8", "root", "");
+$db = new PDO("mysql:host=127.0.0.1;dbname=jq_sample;charset=utf8", "root", "0000");
 date_default_timezone_set('asia/Taipei');
 
 
